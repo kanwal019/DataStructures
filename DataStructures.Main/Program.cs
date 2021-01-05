@@ -6,7 +6,7 @@ namespace DataStructures.Main
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Implementation.DoubleLinkedList.DisplayResult();
         }
     }
 }
