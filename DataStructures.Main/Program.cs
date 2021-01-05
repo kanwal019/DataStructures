@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DataStructures.Main
+﻿namespace DataStructures.Main
 {
     class Program
     {

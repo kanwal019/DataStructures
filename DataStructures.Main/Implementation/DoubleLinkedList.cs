@@ -7,19 +7,19 @@ namespace DataStructures.Main.Implementation
     {
         public static void DisplayResult()
         {
-            List<int> linkedList = new List<int>();
+            DoubleList<int> linkedList = new DoubleList<int>();
             CreateList(ref linkedList);
-            DisplayList(linkedList);
+            DisplayList(linkedList, true);
         }
 
-        private static void CreateList(ref List<int> linkedList)
+        private static void CreateList(ref DoubleList<int> linkedList)
         {
-            linkedList.Head = new Node<int>(10);
-            Node<int> node1 = new Node<int>(1);
-            Node<int> node2 = new Node<int>(2);
-            Node<int> node3 = new Node<int>(3);
-            Node<int> node4 = new Node<int>(4);
-            Node<int> node5 = new Node<int>(5);
+            linkedList.Head = new DoubleNode<int>(10);
+            DoubleNode<int> node1 = new DoubleNode<int>(1);
+            DoubleNode<int> node2 = new DoubleNode<int>(2);
+            DoubleNode<int> node3 = new DoubleNode<int>(3);
+            DoubleNode<int> node4 = new DoubleNode<int>(4);
+            DoubleNode<int> node5 = new DoubleNode<int>(5);
 
             linkedList.Head.Next = node1;
             node1.Prev = linkedList.Head;
@@ -33,9 +33,14 @@ namespace DataStructures.Main.Implementation
             node5.Prev = node4;
         }
 
-        private static void DisplayList(List<int> linkedList)
+        private static void DisplayList(DoubleList<int> linkedList, bool reverse)
         {
-            linkedList.Display();
+            if (!reverse)
+            {
+                linkedList.Display();
+                return;
+            }
+            linkedList.DisplayReverse();            
         }
     }
 }
