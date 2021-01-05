@@ -6,19 +6,19 @@ namespace DataStructures.Main.Implementation
     {
         public static void DisplayResult()
         {
-            List<int> linkedList = new List<int>();
+            SingleList<int> linkedList = new SingleList<int>();
             CreateList(ref linkedList);
             DisplayList(linkedList);
         }
 
-        private static void CreateList(ref List<int> linkedList)
+        private static void CreateList(ref SingleList<int> linkedList)
         {
-            linkedList.Head = new Node<int>(10);
-            Node<int> node1 = new Node<int>(1);
-            Node<int> node2 = new Node<int>(2);
-            Node<int> node3 = new Node<int>(3);
-            Node<int> node4 = new Node<int>(4);
-            Node<int> node5 = new Node<int>(5);
+            linkedList.Head = new SingleNode<int>(10);
+            SingleNode<int> node1 = new SingleNode<int>(1);
+            SingleNode<int> node2 = new SingleNode<int>(2);
+            SingleNode<int> node3 = new SingleNode<int>(3);
+            SingleNode<int> node4 = new SingleNode<int>(4);
+            SingleNode<int> node5 = new SingleNode<int>(5);
 
             linkedList.Head.Next = node1;
             node1.Next = node2;
@@ -27,7 +27,7 @@ namespace DataStructures.Main.Implementation
             node4.Next = node5;
         }
 
-        private static void DisplayList(List<int> linkedList)
+        private static void DisplayList(SingleList<int> linkedList)
         {
             linkedList.Display();
         }
