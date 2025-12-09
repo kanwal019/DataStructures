@@ -1,35 +1,34 @@
 ﻿using System;
 
-namespace DataStructures.Library.LinkedLists.Double
+namespace DataStructures.Library.LinkedLists.Double;
+
+public class DoubleList<T> : List<T>
 {
-    public class DoubleList<T> : List<T>
+    public new DoubleNode<T> Head;
+
+    public DoubleList()
     {
-        public new DoubleNode<T> Head;
+        Head = base.Head as DoubleNode<T>;
+    }
 
-        public DoubleList()
+    public new DoubleNode<T> GetLastNode()
+    {
+        DoubleNode<T> head = Head;
+        while (head.Next is not null)
         {
-            Head = base.Head as DoubleNode<T>;
+            head = (DoubleNode<T>)head.Next;
         }
+        return head;
+    }
 
-        public new DoubleNode<T> GetLastNode()
+    public void DisplayReverse()
+    {
+        DoubleNode<T> head = GetLastNode();
+        while(head is not null)
         {
-            DoubleNode<T> head = Head;
-            while (head.Next != null)
-            {
-                head = (DoubleNode<T>)head.Next;
-            }
-            return head;
+            Console.Write($"{head.Data} ");
+            head = (DoubleNode<T>)head.Prev;
         }
-
-        public void DisplayReverse()
-        {
-            DoubleNode<T> head = GetLastNode();
-            while(head != null)
-            {
-                Console.Write(head.Data + " ");
-                head = (DoubleNode<T>)head.Prev;
-            }
-            Console.WriteLine();
-        }
+        Console.WriteLine();
     }
 }

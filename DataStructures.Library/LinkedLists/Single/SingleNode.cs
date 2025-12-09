@@ -1,9 +1,5 @@
-﻿namespace DataStructures.Library.LinkedLists.Single
+﻿namespace DataStructures.Library.LinkedLists.Single;
+
+public class SingleNode<T>(T data) : Node<T>(data)
 {
-    public class SingleNode<T> : Node<T>
-    {
-        public SingleNode(T data) : base(data)
-        {
-        }
-    }
 }

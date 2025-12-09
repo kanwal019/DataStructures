@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace DataStructures.Library.LinkedLists
+namespace DataStructures.Library.LinkedLists;
+
+public abstract class List<T>
 {
-    public abstract class List<T>
+    public Node<T> Head;
+
+    public virtual void Display()
     {
-        public Node<T> Head;
-
-        public virtual void Display()
+        Node<T> head = Head;
+        while (head is not null)
         {
-            Node<T> head = Head;
-            while (head != null)
-            {
-                Console.Write(head.Data + " ");
-                head = head.Next;
-            }
-            Console.WriteLine();
+            Console.Write($"{head.Data} ");
+            head = head.Next;
         }
+        Console.WriteLine();
+    }
 
-        public virtual Node<T> GetLastNode()
+    public virtual Node<T> GetLastNode()
+    {
+        Node<T> head = Head;
+        while (head.Next is not null)
         {
-            Node<T> head = Head;
-            while (head.Next != null)
-            {
-                Console.Write(head.Data + " ");
-                head = head.Next;
-            }
-            return head;
+            Console.Write($"{head.Data} ");
+            head = head.Next;
         }
+        return head;
     }
 }

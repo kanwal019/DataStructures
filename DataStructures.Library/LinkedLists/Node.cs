@@ -1,14 +1,7 @@
-﻿namespace DataStructures.Library.LinkedLists
-{
-    public abstract class Node<T>
-    {
-        public T Data;
-        public Node<T> Next;
+﻿namespace DataStructures.Library.LinkedLists;
 
-        public Node(T data)
-        {
-            this.Data = data;
-            this.Next = null;
-        }
-    }
+public abstract class Node<T>(T data)
+{
+    public T Data = data;
+    public Node<T> Next = null;
 }
