@@ -1,23 +1,70 @@
 # DataStructures
 
-A small collection of data structure implementations and experiments in C#.
+A collection of data structure implementations in C# for educational purposes. This project explores fundamental concepts through clean, well-organized code.
+
+## Project Status
+
+**Current Phase**: Early Development  
+**Currently Implemented**: Single and Double Linked Lists  
+**Target Framework**: .NET 10.0
 
 ## Contents
-- Implementations: linked lists, stacks, queues, trees, graphs, heaps, hash tables
-- Examples: simple console programs demonstrating usage
-- Tests: unit tests for core data structures (if present)
 
-## Getting started (Windows)
-1. Open the repository in Visual Studio Code.
-2. Build: `dotnet build`
-3. Run a demo project: `dotnet run --project path\to\project.csproj`
-4. Run tests: `dotnet test`
+- **Core Library** (`DataStructures.Core`): Abstract base classes and core data structure implementations
+  - `List<T>`: Base abstraction for linked list operations
+  - `Node<T>`: Base node abstraction
+  - `SingleList<T>` & `SingleNode<T>`: Single linked list with forward traversal
+  - `DoubleList<T>` & `DoubleNode<T>`: Double linked list with forward and reverse traversal
+
+- **Console Examples** (`DataStructures.Console`): Demo applications showing linked list usage
+
+## Getting Started (Windows)
+
+1. **Build the project:**
+   ```bash
+   dotnet build
+   ```
+
+2. **Run the console demo:**
+   ```bash
+   dotnet run --project DataStructures.Console/DataStructures.Console.csproj
+   ```
+
+3. **Build specific project:**
+   ```bash
+   dotnet build DataStructures.Core/DataStructures.Core.csproj
+   ```
+
+## Current Implementations
+
+### Single Linked List
+- **Location**: `DataStructures.Core/LinkedLists/Single/`
+- **Features**: Forward traversal, display all elements
+- **Usage**: Demonstrates basic linked list pattern with `SingleNode<T>` and `SingleList<T>`
+
+### Double Linked List
+- **Location**: `DataStructures.Core/LinkedLists/Double/`
+- **Features**: Bidirectional traversal, display forward and reverse
+- **Methods**:
+  - `Display()`: Print elements from head to tail
+  - `DisplayReverse()`: Print elements from tail to head
+  - `GetLastNode()`: Navigate to the last node
 
 ## Contributing
-- Add implementations under appropriately named folders (e.g., LinkedList, BinaryTree).
-- Add unit tests in a Tests project next to the implementation.
-- Follow simple, well-documented commits and include examples for complex APIs.
+
+- **Add new data structures** under `DataStructures.Core/` in appropriately named folders
+- **Create abstractions** by extending the base `List<T>` and `Node<T>` classes
+- **Add console examples** in `DataStructures.Console/Implementation/` to demonstrate usage
+- **Include unit tests** for new implementations (test project to be added)
+- **Follow conventions**: Use generic types, keep code readable, and document complex logic
+
+## Future Work
+
+Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
 
 ## Notes
-- This is a learning/research repository — expect simple, educational implementations rather than production-ready code.
-- Feel free to open issues or create PRs for improvements.
+
+- This is an **educational repository** — implementations prioritize clarity and learning over production performance
+- Currently, only basic traversal operations are implemented; insert, delete, and search operations are not yet available
+- The `DataStructures.Library` and `DataStructures.Main` folders are legacy and not actively used
+- Feel free to open issues or contribute improvements!
