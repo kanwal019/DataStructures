@@ -1,4 +1,4 @@
-﻿namespace DataStructures.Library.LinkedLists.Double;
+﻿namespace DataStructures.Core.LinkedLists.Double;
 
 public class DoubleNode<T>(T data) : Node<T>(data)
 {

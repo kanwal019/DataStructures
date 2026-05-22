@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataStructures.Library.LinkedLists.Double;
+namespace DataStructures.Core.LinkedLists.Double;
 
 public class DoubleList<T> : List<T>
 {
