@@ -1,4 +1,4 @@
-﻿namespace DataStructures.Library.LinkedLists;
+﻿namespace DataStructures.Core.LinkedLists;
 
 public abstract class Node<T>(T data)
 {

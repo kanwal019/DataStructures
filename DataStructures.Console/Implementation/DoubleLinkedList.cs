@@ -1,4 +1,4 @@
-﻿using DataStructures.Library.LinkedLists.Double;
+﻿using DataStructures.Core.LinkedLists.Double;
 
 namespace DataStructures.Main.Implementation;
 

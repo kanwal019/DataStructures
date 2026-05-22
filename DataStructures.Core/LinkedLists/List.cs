@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DataStructures.Library.LinkedLists;
+namespace DataStructures.Core.LinkedLists;
 
 public abstract class List<T>
 {
