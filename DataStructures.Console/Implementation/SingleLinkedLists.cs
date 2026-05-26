@@ -1,6 +1,6 @@
 ﻿using DataStructures.Core.LinkedLists.Single;
 
-namespace DataStructures.Main.Implementation;
+namespace DataStructures.Console.Implementation;
 
 public class SingleLinkedLists
 {

@@ -1,6 +1,6 @@
 ﻿using DataStructures.Core.LinkedLists.Double;
 
-namespace DataStructures.Main.Implementation;
+namespace DataStructures.Console.Implementation;
 
 public class DoubleLinkedList
 {
