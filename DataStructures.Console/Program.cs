@@ -1,1 +1,1 @@
-﻿DataStructures.Main.Implementation.DoubleLinkedList.DisplayResult();
+DataStructures.Console.Implementation.Arrays.DisplayResult();
