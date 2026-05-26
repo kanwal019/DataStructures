@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.OneDimensionalArrays.DisplayResult();
+DataStructures.Console.Implementation.MultiDimensionalArrays.DisplayJaggedArrayResult();
