@@ -2,7 +2,7 @@ using DataStructures.Core.Arrays;
 
 namespace DataStructures.Console.Implementation;
 
-public class Arrays
+public class OneDimensionalArrays
 {
     public static void DisplayResult()
     {
@@ -14,6 +14,10 @@ public class Arrays
         numbers[3] = 40;
         numbers[4] = 50;
 
+        numbers.Display();
+        numbers.DisplayReverse();
+
+        numbers[1] = 100;
         numbers.Display();
         numbers.DisplayReverse();
     }

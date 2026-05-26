@@ -2,7 +2,7 @@
 
 namespace DataStructures.Console.Implementation;
 
-public class DoubleLinkedList
+public class DoubleLinkedLists
 {
     public static void DisplayResult()
     {

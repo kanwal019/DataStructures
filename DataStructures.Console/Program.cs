@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.Arrays.DisplayResult();
+DataStructures.Console.Implementation.OneDimensionalArrays.DisplayResult();
