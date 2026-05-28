@@ -5,18 +5,21 @@ A collection of data structure implementations in C# for educational purposes. T
 ## Project Status
 
 **Current Phase**: Early Development  
-**Currently Implemented**: Single and Double Linked Lists  
+**Currently Implemented**: Arrays (1D & Multi-dimensional), Single and Double Linked Lists  
 **Target Framework**: .NET 10.0
 
 ## Contents
 
 - **Core Library** (`DataStructures.Core`): Abstract base classes and core data structure implementations
+  - `Array<T>`: Generic array wrapper with indexing and enumeration support
   - `List<T>`: Base abstraction for linked list operations
   - `Node<T>`: Base node abstraction
   - `SingleList<T>` & `SingleNode<T>`: Single linked list with forward traversal
   - `DoubleList<T>` & `DoubleNode<T>`: Double linked list with forward and reverse traversal
 
-- **Console Examples** (`DataStructures.Console`): Demo applications showing linked list usage
+- **Console Examples** (`DataStructures.Console`): Demo applications showing array and linked list usage
+  - Array examples (1D and multi-dimensional)
+  - Linked list examples
 
 ## Getting Started (Windows)
 
@@ -36,6 +39,14 @@ A collection of data structure implementations in C# for educational purposes. T
    ```
 
 ## Current Implementations
+
+### Arrays
+- **Location**: `DataStructures.Core/Arrays/`
+- **Features**: Generic array wrapper with indexing and enumeration
+- **Usage**: `Array<T>` class provides a type-safe wrapper around native arrays
+- **Console Examples** (`DataStructures.Console/Implementation/`):
+  - `OneDimensionalArrays.cs`: Examples with 1D arrays and Array<T> class
+  - `MultiDimensionalArrays.cs`: Examples with 2D and jagged arrays
 
 ### Single Linked List
 - **Location**: `DataStructures.Core/LinkedLists/Single/`
@@ -57,7 +68,8 @@ A collection of data structure implementations in C# for educational purposes. T
 - **Add console examples** in `DataStructures.Console/Implementation/` to demonstrate usage
 - **Include unit tests** for new implementations (test project to be added)
 - **Follow conventions**: Use generic types, keep code readable, and document complex logic
-
+operations are implemented; advanced operations like insert, delete, and search are not yet available
+- Extension methods are used to enhance built-in types with custom display functionality (see `DataStructures.Console/Extensions/`)
 ## Future Work
 
 Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
