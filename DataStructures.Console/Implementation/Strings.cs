@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace DataStructures.Console.Implementation;
 
@@ -61,5 +63,16 @@ public class Strings
         System.Console.WriteLine($"Modified String: {mem}");
         System.Console.WriteLine(firstString);
         System.Console.WriteLine(secondString);
+    }
+
+    public static void DisplayStringBuilderResult()
+    {        
+        var sb = new StringBuilder();
+        foreach (int i in Enumerable.Range(1, 20))
+        {
+            // StringBuilder is mutable, so we can modify it without creating a new object
+            sb.Append($"{i},");
+        }
+        System.Console.WriteLine(sb.ToString());
     }
 }
