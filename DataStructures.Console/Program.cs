@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.Strings.DisplayMemoryStringResult();
+DataStructures.Console.Implementation.Strings.DisplayStringBuilderResult();
