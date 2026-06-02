@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.Strings.DisplayImmutabilityResult();
+DataStructures.Console.Implementation.Strings.DisplayMemoryStringResult();
