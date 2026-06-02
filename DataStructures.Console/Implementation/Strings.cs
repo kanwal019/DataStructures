@@ -46,4 +46,20 @@ public class Strings
             System.Console.WriteLine("Failed to parse the number.");
         }
     }
+
+    public static void DisplayMemoryStringResult()
+    {
+        string firstString = "Test string";
+        string secondString = "Test string";
+
+        // Prints out true, because both strings are interned and reference the same object in memory
+        System.Console.WriteLine(object.ReferenceEquals(firstString, secondString));
+
+        Memory<char> mem = MemoryMarshal.AsMemory(firstString.AsMemory());
+        mem.Span[5] = 'Z';
+
+        System.Console.WriteLine($"Modified String: {mem}");
+        System.Console.WriteLine(firstString);
+        System.Console.WriteLine(secondString);
+    }
 }
