@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.Strings.DisplayStringBuilderResult();
+DataStructures.Console.Implementation.CustomArrayList.DisplayResult();
