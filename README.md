@@ -5,13 +5,14 @@ A collection of data structure implementations in C# for educational purposes. T
 ## Project Status
 
 **Current Phase**: Early Development  
-**Currently Implemented**: Arrays (1D & Multi-dimensional), Single and Double Linked Lists  
+**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists  
 **Target Framework**: .NET 10.0
 
 ## Contents
 
 - **Core Library** (`DataStructures.Core`): Abstract base classes and core data structure implementations
   - `Array<T>`: Generic array wrapper with indexing and enumeration support
+  - `ArrayList<T>`: Dynamic array with automatic resizing, supporting add, insert, and remove operations
   - `List<T>`: Base abstraction for linked list operations
   - `Node<T>`: Base node abstraction
   - `SingleList<T>` & `SingleNode<T>`: Single linked list with forward traversal
@@ -19,6 +20,7 @@ A collection of data structure implementations in C# for educational purposes. T
 
 - **Console Examples** (`DataStructures.Console`): Demo applications showing array and linked list usage
   - Array examples (1D and multi-dimensional)
+  - ArrayList examples with dynamic operations
   - Linked list examples
 
 ## Getting Started (Windows)
@@ -47,6 +49,18 @@ A collection of data structure implementations in C# for educational purposes. T
 - **Console Examples** (`DataStructures.Console/Implementation/`):
   - `OneDimensionalArrays.cs`: Examples with 1D arrays and Array<T> class
   - `MultiDimensionalArrays.cs`: Examples with 2D and jagged arrays
+
+### ArrayList (Dynamic Array)
+- **Location**: `DataStructures.Core/Arrays/`
+- **Features**: Dynamic array with automatic resizing and full CRUD operations
+- **Methods**:
+  - `Add(T item)`: Append item to the end (auto-resize if needed)
+  - `Get(int index)`: Retrieve element at index
+  - `Set(int index, T value)`: Update element at index
+  - `InsertAt(int index, T item)`: Insert item at specific position
+  - `RemoveAt(int index)`: Remove item at specific position
+- **Usage**: `ArrayList<T>` manages internal array with automatic capacity doubling when full
+- **Console Examples**: `CustomArrayList.cs` demonstrates add, set, insert, and remove operations
 
 ### Single Linked List
 - **Location**: `DataStructures.Core/LinkedLists/Single/`
@@ -77,6 +91,7 @@ Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
 ## Notes
 
 - This is an **educational repository** — implementations prioritize clarity and learning over production performance
-- Currently, only basic traversal operations are implemented; insert, delete, and search operations are not yet available
+- Dynamic operations (insert, delete) are now implemented for ArrayList; linked lists and static arrays remain read-only
+- Extension methods are used to enhance types with custom display functionality (see `DataStructures.Console/Extensions/`)
 - The `DataStructures.Library` and `DataStructures.Main` folders are legacy and not actively used
 - Feel free to open issues or contribute improvements!
