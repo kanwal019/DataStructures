@@ -27,4 +27,27 @@ public class CustomArrayList
         numbers.Display();
         numbers.DisplayReverse();
     }
+
+    public static void DisplayStringArrayListResult()
+    {
+        ArrayList<string> words = [];
+        words.Add("Hello");
+        words.Add("World");
+        words.Add("from");
+        words.Add("CustomArrayList");
+        words.Display();
+        words.DisplayReverse();
+
+        words.Set(1, "C#");
+        words.Display();
+        words.DisplayReverse();
+
+        words.InsertAt(2, "is");
+        words.Display();
+        words.DisplayReverse();
+
+        words.RemoveAt(0);
+        words.Display();
+        words.DisplayReverse();
+    }
 }
