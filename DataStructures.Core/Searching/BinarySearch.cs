@@ -36,4 +36,37 @@ public static class BinarySearch
 
         return -1;
     }
+
+    public static int SearchRecursive<T>(T[] array, T target)
+    {
+        if (array == null)
+        {
+            throw new ArgumentNullException(nameof(array), "Array cannot be null.");
+        }
+        return SearchRecursiveHelper(array, target, 0, array.Length - 1);
+    }
+
+    private static int SearchRecursiveHelper<T>(T[] array, T target, int low, int high)
+    {
+        if (low > high)
+        {
+            return -1;
+        }
+
+        int mid = low + (high - low) / 2;
+
+        if (EqualityComparer<T>.Default.Equals(array[mid], target))
+        {
+            return mid;
+        }
+
+        if (Comparer<T>.Default.Compare(array[mid], target) < 0)
+        {
+            return SearchRecursiveHelper(array, target, mid + 1, high);
+        }
+        else
+        {
+            return SearchRecursiveHelper(array, target, low, mid - 1);
+        }
+    }   
 }
