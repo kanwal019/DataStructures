@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.CustomArrayList.DisplayResult();
+DataStructures.Console.Implementation.LinearSearchImplementation.DisplayResult();
