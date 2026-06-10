@@ -3,9 +3,9 @@ using DataStructures.Core.Searching;
 
 namespace DataStructures.Console.Implementation;
 
-public class LinearSearchImplementation
+public class SearchImplementation
 {
-    public static void DisplayResult()
+    public static void DisplayLinearSearchResult()
     {
         int[] numbers = new int[10];
         for (int i = 0; i < 10; i++)
