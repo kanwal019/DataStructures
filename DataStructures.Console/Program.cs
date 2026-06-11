@@ -1,1 +1,3 @@
 DataStructures.Console.Implementation.SearchImplementation.DisplayLinearSearchResult();
+DataStructures.Console.Implementation.SearchImplementation.DisplayBinarySearchResult();
+DataStructures.Console.Implementation.SearchImplementation.DisplayBinarySearchRecursiveResult();
