@@ -5,7 +5,7 @@ A collection of data structure implementations in C# for educational purposes. T
 ## Project Status
 
 **Current Phase**: Early Development  
-**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists  
+**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search)  
 **Target Framework**: .NET 10.0
 
 ## Contents
@@ -17,11 +17,14 @@ A collection of data structure implementations in C# for educational purposes. T
   - `Node<T>`: Base node abstraction
   - `SingleList<T>` & `SingleNode<T>`: Single linked list with forward traversal
   - `DoubleList<T>` & `DoubleNode<T>`: Double linked list with forward and reverse traversal
+  - `LinearSearch`: Sequential search algorithm for unsorted arrays
+  - `BinarySearch`: Efficient search for sorted arrays with iterative and recursive implementations
 
-- **Console Examples** (`DataStructures.Console`): Demo applications showing array and linked list usage
+- **Console Examples** (`DataStructures.Console`): Demo applications showing array, linked list, and search algorithm usage
   - Array examples (1D and multi-dimensional)
   - ArrayList examples with dynamic operations
   - Linked list examples
+  - Search algorithm examples (linear and binary search)
 
 ## Getting Started (Windows)
 
@@ -75,6 +78,19 @@ A collection of data structure implementations in C# for educational purposes. T
   - `DisplayReverse()`: Print elements from tail to head
   - `GetLastNode()`: Navigate to the last node
 
+### Searching Algorithms
+- **Location**: `DataStructures.Core/Searching/`
+- **Linear Search**:
+  - **Method**: `LinearSearch.Search(T[] array, T target)`
+  - **Time Complexity**: O(n)
+  - **Use Case**: Works on unsorted arrays, simple implementation
+- **Binary Search**:
+  - **Methods**: `BinarySearch.Search()` (iterative) and `BinarySearch.SearchRecursive()` (recursive)
+  - **Time Complexity**: O(log n)
+  - **Requirement**: Array must be sorted
+  - **Use Case**: Efficient searching in large sorted datasets
+- **Console Examples**: `SearchImplementation.cs` demonstrates all search algorithms
+
 ## Contributing
 
 - **Add new data structures** under `DataStructures.Core/` in appropriately named folders
@@ -92,6 +108,7 @@ Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
 
 - This is an **educational repository** — implementations prioritize clarity and learning over production performance
 - Dynamic operations (insert, delete) are now implemented for ArrayList; linked lists and static arrays remain read-only
+- Search algorithms are available with both basic (Linear) and optimized (Binary) implementations
 - Extension methods are used to enhance types with custom display functionality (see `DataStructures.Console/Extensions/`)
 - The `DataStructures.Library` and `DataStructures.Main` folders are legacy and not actively used
 - Feel free to open issues or contribute improvements!
