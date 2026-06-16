@@ -5,7 +5,7 @@ A collection of data structure implementations in C# for educational purposes. T
 ## Project Status
 
 **Current Phase**: Early Development  
-**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search)  
+**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search), Sorting Algorithms (Selection, Bubble, Merge)  
 **Target Framework**: .NET 10.0
 
 ## Contents
@@ -19,12 +19,16 @@ A collection of data structure implementations in C# for educational purposes. T
   - `DoubleList<T>` & `DoubleNode<T>`: Double linked list with forward and reverse traversal
   - `LinearSearch`: Sequential search algorithm for unsorted arrays
   - `BinarySearch`: Efficient search for sorted arrays with iterative and recursive implementations
+  - `SelectionSort`: Sorting algorithm based on finding minimum elements
+  - `BubbleSort`: Simple sorting algorithm with repeated swapping adjacent elements
+  - `MergeSort`: Divide-and-conquer sorting algorithm with O(n log n) complexity
 
-- **Console Examples** (`DataStructures.Console`): Demo applications showing array, linked list, and search algorithm usage
+- **Console Examples** (`DataStructures.Console`): Demo applications showing array, linked list, search, and sorting algorithm usage
   - Array examples (1D and multi-dimensional)
   - ArrayList examples with dynamic operations
   - Linked list examples
   - Search algorithm examples (linear and binary search)
+  - Sorting algorithm examples (selection, bubble, and merge sort)
 
 ## Getting Started (Windows)
 
@@ -91,6 +95,25 @@ A collection of data structure implementations in C# for educational purposes. T
   - **Use Case**: Efficient searching in large sorted datasets
 - **Console Examples**: `SearchImplementation.cs` demonstrates all search algorithms
 
+### Sorting Algorithms
+- **Location**: `DataStructures.Core/Sorting/`
+- **Selection Sort**:
+  - **Method**: `SelectionSort.Sort(T[] array)`
+  - **Time Complexity**: O(n²)
+  - **How It Works**: Finds minimum element and places it at the beginning, repeats for remaining elements
+  - **Use Case**: Small datasets, simple implementation, in-place sorting
+- **Bubble Sort**:
+  - **Method**: `BubbleSort.Sort(T[] array)`
+  - **Time Complexity**: O(n²) worst/average case, O(n) best case
+  - **How It Works**: Repeatedly swaps adjacent elements if they're in wrong order
+  - **Use Case**: Educational purposes, nearly sorted data
+- **Merge Sort**:
+  - **Method**: `MergeSort.Sort(T[] array)`
+  - **Time Complexity**: O(n log n) in all cases
+  - **How It Works**: Divides array in half, recursively sorts, then merges sorted halves
+  - **Use Case**: Large datasets, guaranteed O(n log n) performance, stable sort
+- **Console Examples**: `SortImplementation.cs` demonstrates all sorting algorithms
+
 ## Contributing
 
 - **Add new data structures** under `DataStructures.Core/` in appropriately named folders
@@ -107,8 +130,9 @@ Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
 ## Notes
 
 - This is an **educational repository** — implementations prioritize clarity and learning over production performance
-- Dynamic operations (insert, delete) are now implemented for ArrayList; linked lists and static arrays remain read-only
-- Search algorithms are available with both basic (Linear) and optimized (Binary) implementations
+- Dynamic operations (insert, delete) are implemented for ArrayList; linked lists and static arrays remain read-only
+- Algorithms include both basic search (Linear Search) and optimized variants (Binary Search)
+- Sorting algorithms demonstrate different approaches: simple O(n²) sorts (Selection, Bubble) and efficient O(n log n) sorts (Merge)
 - Extension methods are used to enhance types with custom display functionality (see `DataStructures.Console/Extensions/`)
 - The `DataStructures.Library` and `DataStructures.Main` folders are legacy and not actively used
 - Feel free to open issues or contribute improvements!
