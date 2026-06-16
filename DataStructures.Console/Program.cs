@@ -1,3 +1,3 @@
-DataStructures.Console.Implementation.SearchImplementation.DisplayLinearSearchResult();
-DataStructures.Console.Implementation.SearchImplementation.DisplayBinarySearchResult();
-DataStructures.Console.Implementation.SearchImplementation.DisplayBinarySearchRecursiveResult();
+DataStructures.Console.Implementation.SortImplementation.DisplaySelectionSortResult();
+DataStructures.Console.Implementation.SortImplementation.DisplayBubbleSortResult();
+DataStructures.Console.Implementation.SortImplementation.DisplayMergeSortResult();
