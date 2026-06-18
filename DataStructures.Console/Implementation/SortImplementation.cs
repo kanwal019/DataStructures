@@ -31,4 +31,31 @@ public class SortImplementation
         MergeSort.Sort(numbers);
         numbers.Display();
     }
+
+    public static void DisplayQuickSortResult()
+    {
+        int[] numbers = [10, 7, 8, 9, 1];
+        numbers.Display();
+
+        QuickSort.Sort(numbers);
+        numbers.Display();
+    }
+
+    public static void DisplayInsertionSortResult()
+    {
+        int[] numbers = [12, 11, 13, 5, 6];
+        numbers.Display();
+
+        InsertionSort.Sort(numbers);
+        numbers.Display();
+    }
+
+    public static void DisplayHeapSortResult()
+    {
+        int[] numbers = [12, 11, 13, 5, 6];
+        numbers.Display();
+
+        HeapSort.Sort(numbers);
+        numbers.Display();
+    }
 }
