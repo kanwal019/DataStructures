@@ -1,3 +1,6 @@
 DataStructures.Console.Implementation.SortImplementation.DisplaySelectionSortResult();
 DataStructures.Console.Implementation.SortImplementation.DisplayBubbleSortResult();
 DataStructures.Console.Implementation.SortImplementation.DisplayMergeSortResult();
+DataStructures.Console.Implementation.SortImplementation.DisplayQuickSortResult();
+DataStructures.Console.Implementation.SortImplementation.DisplayInsertionSortResult();
+DataStructures.Console.Implementation.SortImplementation.DisplayHeapSortResult();
