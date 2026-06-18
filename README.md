@@ -5,7 +5,7 @@ A collection of data structure implementations in C# for educational purposes. T
 ## Project Status
 
 **Current Phase**: Early Development  
-**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search), Sorting Algorithms (Selection, Bubble, Merge)  
+**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search), Sorting Algorithms (Selection, Bubble, Insertion, Merge, Quick, Heap)  
 **Target Framework**: .NET 10.0
 
 ## Contents
@@ -21,14 +21,17 @@ A collection of data structure implementations in C# for educational purposes. T
   - `BinarySearch`: Efficient search for sorted arrays with iterative and recursive implementations
   - `SelectionSort`: Sorting algorithm based on finding minimum elements
   - `BubbleSort`: Simple sorting algorithm with repeated swapping adjacent elements
+  - `InsertionSort`: Builds sorted array by inserting elements one at a time
   - `MergeSort`: Divide-and-conquer sorting algorithm with O(n log n) complexity
+  - `QuickSort`: Efficient divide-and-conquer sorting using pivot partitioning
+  - `HeapSort`: Sorting algorithm using heap data structure
 
 - **Console Examples** (`DataStructures.Console`): Demo applications showing array, linked list, search, and sorting algorithm usage
   - Array examples (1D and multi-dimensional)
   - ArrayList examples with dynamic operations
   - Linked list examples
   - Search algorithm examples (linear and binary search)
-  - Sorting algorithm examples (selection, bubble, and merge sort)
+  - Sorting algorithm examples (selection, bubble, insertion, merge, quick, and heap sort)
 
 ## Getting Started (Windows)
 
@@ -107,11 +110,26 @@ A collection of data structure implementations in C# for educational purposes. T
   - **Time Complexity**: O(n²) worst/average case, O(n) best case
   - **How It Works**: Repeatedly swaps adjacent elements if they're in wrong order
   - **Use Case**: Educational purposes, nearly sorted data
+- **Insertion Sort**:
+  - **Method**: `InsertionSort.Sort(T[] array)`
+  - **Time Complexity**: O(n²) worst/average case, O(n) best case
+  - **How It Works**: Builds the sorted array by inserting elements one at a time into their correct position
+  - **Use Case**: Small datasets, nearly sorted data, stable sort
 - **Merge Sort**:
   - **Method**: `MergeSort.Sort(T[] array)`
   - **Time Complexity**: O(n log n) in all cases
   - **How It Works**: Divides array in half, recursively sorts, then merges sorted halves
   - **Use Case**: Large datasets, guaranteed O(n log n) performance, stable sort
+- **Quick Sort**:
+  - **Method**: `QuickSort.Sort(T[] array)`
+  - **Time Complexity**: O(n log n) average case, O(n²) worst case
+  - **How It Works**: Selects a pivot element, partitions array around it, recursively sorts sub-arrays
+  - **Use Case**: General-purpose sorting, good average performance, in-place sorting
+- **Heap Sort**:
+  - **Method**: `HeapSort.Sort(T[] array)`
+  - **Time Complexity**: O(n log n) in all cases
+  - **How It Works**: Builds a max heap, repeatedly extracts max element and places it at the end
+  - **Use Case**: Guaranteed O(n log n) performance, in-place sorting, no extra space needed
 - **Console Examples**: `SortImplementation.cs` demonstrates all sorting algorithms
 
 ## Contributing
