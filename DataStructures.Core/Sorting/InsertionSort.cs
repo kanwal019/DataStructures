@@ -1,3 +1,5 @@
+using System;
+
 namespace DataStructures.Core.Sorting;
 
 public static class InsertionSort
