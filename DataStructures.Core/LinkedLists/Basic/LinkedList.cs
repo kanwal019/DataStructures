@@ -1,11 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace DataStructures.Core.LinkedLists.Basic;
-
-public class Node<T>
-{
-    public Node<T> Next { get; set; }
-
-    public T Value { get; set; }
-}
 
 public class LinkedList<T>
 {
@@ -14,65 +11,53 @@ public class LinkedList<T>
     public (Node<T> previous, Node<T> found) FindFirst(T value)
     {
         Node<T> previous = null;
-        Node<T> current = Root;
 
-        if (null == current) return (null, null);
-        // why not (current.Value == value) ?
-        // because structures by default do not have == operator 
-        if (current.Value.Equals(value)) return (null, Root);
-
-        do
+        for (var current = Root; current != null; current = current.Next)
         {
-            previous = current;
-            current = current.Next;
-
-            if (current.Value.Equals(value))
+            if (EqualityComparer<T>.Default.Equals(current.Value, value))
+            {
                 return (previous, current);
+            }
 
-        } while (null != current.Next);
+            previous = current;
+        }
 
         return (null, null);
     }
 
     public Node<T> AddAfter(Node<T> node, T value)
     {
-        var valueNode = new Node<T>
-        {
-            Next = node.Next,
-            Value = value
-        };
+        ArgumentNullException.ThrowIfNull(node);
 
+        var valueNode = CreateNode(value, node.Next);
         node.Next = valueNode;
+
         return valueNode;
     }
 
     public Node<T> Add(T value)
     {
-        var valueNode = new Node<T>
+        var valueNode = CreateNode(value);
+
+        if (Root == null)
         {
-            Value = value,
-            Next = null
-        };
-
-        if (null == Root) Root = valueNode;
-
-        else
-        {
-            var node = Root;
-            while (null != node.Next)
-            {
-                node = node.Next;
-            }
-
-            node.Next = valueNode;
+            Root = valueNode;
+            return valueNode;
         }
+
+        GetTail().Next = valueNode;
         return valueNode;
     }
 
     public bool DeleteAfter(Node<T> node)
     {
+        ArgumentNullException.ThrowIfNull(node);
+
         var nextNode = node.Next;
-        if (null == nextNode) return false; // nothing to delete
+        if (nextNode == null)
+        {
+            return false;
+        }
 
         node.Next = nextNode.Next;
         return true;
@@ -80,19 +65,43 @@ public class LinkedList<T>
 
     public override string ToString()
     {
-        string result = "[";
+        var result = new StringBuilder("[");
         var node = Root;
 
         while (node != null)
         {
-            result += node.Value;
+            result.Append(node.Value);
             node = node.Next;
 
-            if (null != node) result += ",";
+            if (node != null)
+            {
+                result.Append(',');
+            }
         }
 
-        result += "]";
+        result.Append(']');
 
-        return result;
+        return result.ToString();
+    }
+
+    private static Node<T> CreateNode(T value, Node<T> next = null)
+    {
+        return new Node<T>
+        {
+            Value = value,
+            Next = next
+        };
+    }
+
+    private Node<T> GetTail()
+    {
+        var node = Root;
+
+        while (node.Next != null)
+        {
+            node = node.Next;
+        }
+
+        return node;
     }
 }
