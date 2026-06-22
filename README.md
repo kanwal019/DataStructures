@@ -1,156 +1,158 @@
 # DataStructures
 
-A collection of data structure implementations in C# for educational purposes. This project explores fundamental concepts through clean, well-organized code.
+A C# learning repository for implementing common data structures and algorithms from the ground up. The code favors readability and step-by-step exploration over production-ready abstractions.
 
 ## Project Status
 
-**Current Phase**: Early Development  
-**Currently Implemented**: Arrays (1D & Multi-dimensional), ArrayList (dynamic array), Single and Double Linked Lists, Search Algorithms (Linear & Binary Search), Sorting Algorithms (Selection, Bubble, Insertion, Merge, Quick, Heap)  
-**Target Framework**: .NET 10.0
+**Current phase**: Early development  
+**Target framework**: .NET 10.0  
+**Current console entry point**: `MovingPointerLinkedList.DisplayResult()`
 
-## Contents
+Implemented so far:
 
-- **Core Library** (`DataStructures.Core`): Abstract base classes and core data structure implementations
-  - `Array<T>`: Generic array wrapper with indexing and enumeration support
-  - `ArrayList<T>`: Dynamic array with automatic resizing, supporting add, insert, and remove operations
-  - `List<T>`: Base abstraction for linked list operations
-  - `Node<T>`: Base node abstraction
-  - `SingleList<T>` & `SingleNode<T>`: Single linked list with forward traversal
-  - `DoubleList<T>` & `DoubleNode<T>`: Double linked list with forward and reverse traversal
-  - `LinearSearch`: Sequential search algorithm for unsorted arrays
-  - `BinarySearch`: Efficient search for sorted arrays with iterative and recursive implementations
-  - `SelectionSort`: Sorting algorithm based on finding minimum elements
-  - `BubbleSort`: Simple sorting algorithm with repeated swapping adjacent elements
-  - `InsertionSort`: Builds sorted array by inserting elements one at a time
-  - `MergeSort`: Divide-and-conquer sorting algorithm with O(n log n) complexity
-  - `QuickSort`: Efficient divide-and-conquer sorting using pivot partitioning
-  - `HeapSort`: Sorting algorithm using heap data structure
+- Arrays and multi-dimensional array examples
+- `ArrayList<T>` dynamic array
+- Basic, singly linked, and doubly linked lists
+- Moving-pointer linked-list exercises
+- Linear and binary search
+- Selection, bubble, insertion, merge, quick, and heap sort
+- String behavior examples
 
-- **Console Examples** (`DataStructures.Console`): Demo applications showing array, linked list, search, and sorting algorithm usage
-  - Array examples (1D and multi-dimensional)
-  - ArrayList examples with dynamic operations
-  - Linked list examples
-  - Search algorithm examples (linear and binary search)
-  - Sorting algorithm examples (selection, bubble, insertion, merge, quick, and heap sort)
+## Solution Layout
 
-## Getting Started (Windows)
+- `DataStructures.Core`: reusable data structures, nodes, extensions, searching, and sorting algorithms
+- `DataStructures.Console`: console demos and display helpers for the core implementations
+- `DataStructures.Library` and `DataStructures.Main`: legacy folders that are not currently active
 
-1. **Build the project:**
-   ```bash
-   dotnet build
-   ```
+## Getting Started
 
-2. **Run the console demo:**
-   ```bash
-   dotnet run --project DataStructures.Console/DataStructures.Console.csproj
-   ```
+Build the solution:
 
-3. **Build specific project:**
-   ```bash
-   dotnet build DataStructures.Core/DataStructures.Core.csproj
-   ```
+```bash
+dotnet build
+```
 
-## Current Implementations
+Run the console demo:
+
+```bash
+dotnet run --project DataStructures.Console/DataStructures.Console.csproj
+```
+
+Build only the core project:
+
+```bash
+dotnet build DataStructures.Core/DataStructures.Core.csproj
+```
+
+## Implementations
 
 ### Arrays
-- **Location**: `DataStructures.Core/Arrays/`
-- **Features**: Generic array wrapper with indexing and enumeration
-- **Usage**: `Array<T>` class provides a type-safe wrapper around native arrays
-- **Console Examples** (`DataStructures.Console/Implementation/`):
-  - `OneDimensionalArrays.cs`: Examples with 1D arrays and Array<T> class
-  - `MultiDimensionalArrays.cs`: Examples with 2D and jagged arrays
 
-### ArrayList (Dynamic Array)
-- **Location**: `DataStructures.Core/Arrays/`
-- **Features**: Dynamic array with automatic resizing and full CRUD operations
-- **Methods**:
-  - `Add(T item)`: Append item to the end (auto-resize if needed)
-  - `Get(int index)`: Retrieve element at index
-  - `Set(int index, T value)`: Update element at index
-  - `InsertAt(int index, T item)`: Insert item at specific position
-  - `RemoveAt(int index)`: Remove item at specific position
-- **Usage**: `ArrayList<T>` manages internal array with automatic capacity doubling when full
-- **Console Examples**: `CustomArrayList.cs` demonstrates add, set, insert, and remove operations
+**Location**: `DataStructures.Core/Arrays/`
 
-### Single Linked List
-- **Location**: `DataStructures.Core/LinkedLists/Single/`
-- **Features**: Forward traversal, display all elements
-- **Usage**: Demonstrates basic linked list pattern with `SingleNode<T>` and `SingleList<T>`
+- `Array<T>`: generic wrapper around native arrays with indexing and enumeration support
+- Console examples:
+  - `OneDimensionalArrays.cs`
+  - `MultiDimensionalArrays.cs`
 
-### Double Linked List
-- **Location**: `DataStructures.Core/LinkedLists/Double/`
-- **Features**: Bidirectional traversal, display forward and reverse
-- **Methods**:
-  - `Display()`: Print elements from head to tail
-  - `DisplayReverse()`: Print elements from tail to head
-  - `GetLastNode()`: Navigate to the last node
+### ArrayList
+
+**Location**: `DataStructures.Core/Arrays/ArrayList.cs`
+
+`ArrayList<T>` is a dynamic array implementation with automatic resizing.
+
+Supported operations:
+
+- `Add(T item)`
+- `Get(int index)`
+- `Set(int index, T value)`
+- `InsertAt(int index, T item)`
+- `RemoveAt(int index)`
+
+Console example: `DataStructures.Console/Implementation/CustomArrayList.cs`
+
+### Linked Lists
+
+**Locations**:
+
+- `DataStructures.Core/LinkedLists/Basic/`
+- `DataStructures.Core/LinkedLists/Single/`
+- `DataStructures.Core/LinkedLists/Double/`
+
+Implemented variants:
+
+- `LinkedList<T>` with add, add-after, find-first, delete-after, and string display support
+- `SingleList<T>` and `SingleNode<T>` for forward traversal
+- `DoubleList<T>` and `DoubleNode<T>` for forward and reverse traversal
+- `MovingPointer<T>` for pointer-based linked-list exercises
+
+Moving-pointer examples include:
+
+- Splitting a list into halves using fast and slow pointers
+- Detecting cycles with fast and slow pointers
+- Finding the node before a cycle and the node where a cycle starts
+
+Console examples:
+
+- `BasicLinkedList.cs`
+- `SingleLinkedLists.cs`
+- `DoubleLinkedLists.cs`
+- `MovingPointerLinkedList.cs`
 
 ### Searching Algorithms
-- **Location**: `DataStructures.Core/Searching/`
-- **Linear Search**:
-  - **Method**: `LinearSearch.Search(T[] array, T target)`
-  - **Time Complexity**: O(n)
-  - **Use Case**: Works on unsorted arrays, simple implementation
-- **Binary Search**:
-  - **Methods**: `BinarySearch.Search()` (iterative) and `BinarySearch.SearchRecursive()` (recursive)
-  - **Time Complexity**: O(log n)
-  - **Requirement**: Array must be sorted
-  - **Use Case**: Efficient searching in large sorted datasets
-- **Console Examples**: `SearchImplementation.cs` demonstrates all search algorithms
+
+**Location**: `DataStructures.Core/Searching/`
+
+- `LinearSearch.Search(T[] array, T target)`: sequential search for unsorted arrays, O(n)
+- `BinarySearch.Search(...)`: iterative binary search for sorted arrays, O(log n)
+- `BinarySearch.SearchRecursive(...)`: recursive binary search for sorted arrays, O(log n)
+
+Console example: `DataStructures.Console/Implementation/SearchImplementation.cs`
 
 ### Sorting Algorithms
-- **Location**: `DataStructures.Core/Sorting/`
-- **Selection Sort**:
-  - **Method**: `SelectionSort.Sort(T[] array)`
-  - **Time Complexity**: O(n²)
-  - **How It Works**: Finds minimum element and places it at the beginning, repeats for remaining elements
-  - **Use Case**: Small datasets, simple implementation, in-place sorting
-- **Bubble Sort**:
-  - **Method**: `BubbleSort.Sort(T[] array)`
-  - **Time Complexity**: O(n²) worst/average case, O(n) best case
-  - **How It Works**: Repeatedly swaps adjacent elements if they're in wrong order
-  - **Use Case**: Educational purposes, nearly sorted data
-- **Insertion Sort**:
-  - **Method**: `InsertionSort.Sort(T[] array)`
-  - **Time Complexity**: O(n²) worst/average case, O(n) best case
-  - **How It Works**: Builds the sorted array by inserting elements one at a time into their correct position
-  - **Use Case**: Small datasets, nearly sorted data, stable sort
-- **Merge Sort**:
-  - **Method**: `MergeSort.Sort(T[] array)`
-  - **Time Complexity**: O(n log n) in all cases
-  - **How It Works**: Divides array in half, recursively sorts, then merges sorted halves
-  - **Use Case**: Large datasets, guaranteed O(n log n) performance, stable sort
-- **Quick Sort**:
-  - **Method**: `QuickSort.Sort(T[] array)`
-  - **Time Complexity**: O(n log n) average case, O(n²) worst case
-  - **How It Works**: Selects a pivot element, partitions array around it, recursively sorts sub-arrays
-  - **Use Case**: General-purpose sorting, good average performance, in-place sorting
-- **Heap Sort**:
-  - **Method**: `HeapSort.Sort(T[] array)`
-  - **Time Complexity**: O(n log n) in all cases
-  - **How It Works**: Builds a max heap, repeatedly extracts max element and places it at the end
-  - **Use Case**: Guaranteed O(n log n) performance, in-place sorting, no extra space needed
-- **Console Examples**: `SortImplementation.cs` demonstrates all sorting algorithms
+
+**Location**: `DataStructures.Core/Sorting/`
+
+- `SelectionSort`: repeatedly selects the smallest remaining item, O(n^2)
+- `BubbleSort`: repeatedly swaps adjacent out-of-order items, O(n^2)
+- `InsertionSort`: inserts each item into the sorted portion, O(n^2)
+- `MergeSort`: divide-and-conquer stable sort, O(n log n)
+- `QuickSort`: pivot-based divide-and-conquer sort, average O(n log n)
+- `HeapSort`: heap-based in-place sort, O(n log n)
+
+Console example: `DataStructures.Console/Implementation/SortImplementation.cs`
+
+### Strings
+
+**Location**: `DataStructures.Console/Implementation/Strings.cs`
+
+String examples cover common string methods, immutability, spans, memory behavior, and `StringBuilder`.
+
+## Console Helpers
+
+`DataStructures.Console/Extensions/` contains display and demo helpers for arrays, array lists, and linked lists. These helpers keep console output concerns separate from the core data-structure classes.
 
 ## Contributing
 
-- **Add new data structures** under `DataStructures.Core/` in appropriately named folders
-- **Create abstractions** by extending the base `List<T>` and `Node<T>` classes
-- **Add console examples** in `DataStructures.Console/Implementation/` to demonstrate usage
-- **Include unit tests** for new implementations (test project to be added)
-- **Follow conventions**: Use generic types, keep code readable, and document complex logic
-operations are implemented; advanced operations like insert, delete, and search are not yet available
-- Extension methods are used to enhance built-in types with custom display functionality (see `DataStructures.Console/Extensions/`)
+- Add reusable implementations under `DataStructures.Core/`
+- Add demo code under `DataStructures.Console/Implementation/`
+- Prefer generic types where they make the implementation clearer
+- Keep educational readability ahead of cleverness
+- Add focused tests when a test project is introduced
+
 ## Future Work
 
-Planned implementations: Stacks, Queues, Binary Trees, Graphs, Hash Tables
+Planned topics:
+
+- Stacks
+- Queues
+- Binary trees
+- Graphs
+- Hash tables
+- Unit tests
 
 ## Notes
 
-- This is an **educational repository** — implementations prioritize clarity and learning over production performance
-- Dynamic operations (insert, delete) are implemented for ArrayList; linked lists and static arrays remain read-only
-- Algorithms include both basic search (Linear Search) and optimized variants (Binary Search)
-- Sorting algorithms demonstrate different approaches: simple O(n²) sorts (Selection, Bubble) and efficient O(n log n) sorts (Merge)
-- Extension methods are used to enhance types with custom display functionality (see `DataStructures.Console/Extensions/`)
-- The `DataStructures.Library` and `DataStructures.Main` folders are legacy and not actively used
-- Feel free to open issues or contribute improvements!
+- This repository is educational, so implementations intentionally expose the underlying ideas.
+- Some APIs are still evolving as new data structures are added.
+- The console app currently runs the moving-pointer linked-list demo; switch `Program.cs` to run another implementation demo.
