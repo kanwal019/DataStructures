@@ -14,13 +14,15 @@ public static class LinkedListExtensions
     {
         var fast = list.Root;
         var slow = list.Root;
-        while (null != fast.Next && null != fast.Next.Next)
+
+        while (fast?.Next?.Next != null)
         {
             fast = fast.Next.Next;
-
             slow = slow.Next;
+
             if (fast == slow) return slow;
         }
+
         return null;
     }
 }

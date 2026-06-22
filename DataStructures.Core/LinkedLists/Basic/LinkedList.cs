@@ -6,7 +6,7 @@ namespace DataStructures.Core.LinkedLists.Basic;
 
 public class LinkedList<T>
 {
-    public Node<T> Root { get; private set; }
+    public Node<T> Root { get; protected set; }
 
     public (Node<T> previous, Node<T> found) FindFirst(T value)
     {
@@ -65,6 +65,25 @@ public class LinkedList<T>
 
     public override string ToString()
     {
+        return BuildString();
+    }
+
+    protected Node<T> AppendNode(Node<T> valueNode)
+    {
+        ArgumentNullException.ThrowIfNull(valueNode);
+
+        if (Root == null)
+        {
+            Root = valueNode;
+            return valueNode;
+        }
+
+        GetTail().Next = valueNode;
+        return valueNode;
+    }
+
+    protected string BuildString()
+    {
         var result = new StringBuilder("[");
         var node = Root;
 
@@ -84,7 +103,7 @@ public class LinkedList<T>
         return result.ToString();
     }
 
-    private static Node<T> CreateNode(T value, Node<T> next = null)
+    protected static Node<T> CreateNode(T value, Node<T> next = null)
     {
         return new Node<T>
         {
@@ -93,7 +112,7 @@ public class LinkedList<T>
         };
     }
 
-    private Node<T> GetTail()
+    protected Node<T> GetTail()
     {
         var node = Root;
 
