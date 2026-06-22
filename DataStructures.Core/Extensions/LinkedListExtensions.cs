@@ -10,7 +10,7 @@ public static class LinkedListExtensions
         return null != node;
     }
 
-    private static Node<T> GetNodeInsideLoop<T>(this MovingPointer<T> list)
+    public static Node<T> GetNodeInsideLoop<T>(this MovingPointer<T> list)
     {
         var fast = list.Root;
         var slow = list.Root;

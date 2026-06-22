@@ -1,3 +1,5 @@
+using DataStructures.Core.Extensions;
+
 namespace DataStructures.Core.LinkedLists.Basic;
 
 public class MovingPointer<T>
