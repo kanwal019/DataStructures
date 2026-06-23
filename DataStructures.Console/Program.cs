@@ -1,1 +1,1 @@
-DataStructures.Console.Implementation.MovingPointerLinkedList.DisplayResult();
+DataStructures.Console.Implementation.QueueImplementation.DisplayResult();
