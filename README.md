@@ -6,7 +6,7 @@ A C# learning repository for implementing common data structures and algorithms 
 
 **Current phase**: Early development  
 **Target framework**: .NET 10.0  
-**Current console entry point**: `MovingPointerLinkedList.DisplayResult()`
+**Current console entry point**: `QueueImplementation.DisplayResult()`
 
 Implemented so far:
 
@@ -14,6 +14,7 @@ Implemented so far:
 - `ArrayList<T>` dynamic array
 - Basic, singly linked, and doubly linked lists
 - Moving-pointer linked-list exercises
+- Queue backed by linked nodes
 - Linear and binary search
 - Selection, bubble, insertion, merge, quick, and heap sort
 - String behavior examples
@@ -78,6 +79,7 @@ Console example: `DataStructures.Console/Implementation/CustomArrayList.cs`
 - `DataStructures.Core/LinkedLists/Basic/`
 - `DataStructures.Core/LinkedLists/Single/`
 - `DataStructures.Core/LinkedLists/Double/`
+- Shared node type: `DataStructures.Core/Common/Node.cs`
 
 Implemented variants:
 
@@ -98,6 +100,21 @@ Console examples:
 - `SingleLinkedLists.cs`
 - `DoubleLinkedLists.cs`
 - `MovingPointerLinkedList.cs`
+
+### Queues
+
+**Location**: `DataStructures.Core/Queues/Queue.cs`
+
+`Queue<T>` is a linked-node FIFO queue implementation using shared `Node<T>` references for the head and tail.
+
+Supported operations:
+
+- `Enqueue(T value)`
+- `Dequeue()`
+- `Peek()`
+- `ToString()`
+
+Console example: `DataStructures.Console/Implementation/QueueImplementation.cs`
 
 ### Searching Algorithms
 
@@ -145,7 +162,6 @@ String examples cover common string methods, immutability, spans, memory behavio
 Planned topics:
 
 - Stacks
-- Queues
 - Binary trees
 - Graphs
 - Hash tables
@@ -155,4 +171,4 @@ Planned topics:
 
 - This repository is educational, so implementations intentionally expose the underlying ideas.
 - Some APIs are still evolving as new data structures are added.
-- The console app currently runs the moving-pointer linked-list demo; switch `Program.cs` to run another implementation demo.
+- The console app currently runs the queue demo; switch `Program.cs` to run another implementation demo.
