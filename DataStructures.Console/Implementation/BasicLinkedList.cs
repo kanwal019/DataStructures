@@ -7,7 +7,6 @@ public class BasicLinkedList
     public static void DisplayResult()
     {
         var list = new LinkedList<int>();
-        
         list.Add(1);
         list.Add(5);
         list.Add(12);

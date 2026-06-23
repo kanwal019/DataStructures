@@ -7,7 +7,7 @@ public static class BinarySearch
 {
     public static int Search<T>(T[] array, T target)
     {
-        if (array == null)
+        if (array is null)
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
@@ -39,7 +39,7 @@ public static class BinarySearch
 
     public static int SearchRecursive<T>(T[] array, T target)
     {
-        if (array == null)
+        if (array is null)
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }

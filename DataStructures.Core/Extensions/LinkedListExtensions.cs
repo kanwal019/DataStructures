@@ -1,4 +1,5 @@
 using DataStructures.Core.LinkedLists.Basic;
+using DataStructures.Core.Common;
 
 namespace DataStructures.Core.Extensions;
 
@@ -7,7 +8,7 @@ public static class LinkedListExtensions
     public static bool HasCycle<T>(this MovingPointer<T> list)
     {
         var node = GetNodeInsideLoop(list);
-        return null != node;
+        return node is not null;
     }
 
     public static Node<T> GetNodeInsideLoop<T>(this MovingPointer<T> list)
@@ -15,7 +16,7 @@ public static class LinkedListExtensions
         var fast = list.Root;
         var slow = list.Root;
 
-        while (fast?.Next?.Next != null)
+        while (fast?.Next?.Next is not null)
         {
             fast = fast.Next.Next;
             slow = slow.Next;

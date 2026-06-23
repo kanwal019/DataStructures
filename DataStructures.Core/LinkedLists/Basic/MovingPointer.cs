@@ -1,13 +1,11 @@
+using DataStructures.Core.Common;
 using DataStructures.Core.Extensions;
 
 namespace DataStructures.Core.LinkedLists.Basic;
 
 public class MovingPointer<T> : LinkedList<T>
 {
-    public Node<T> AddNode(Node<T> valueNode)
-    {
-        return AppendNode(valueNode);
-    }
+    public Node<T> AddNode(Node<T> valueNode) => AppendNode(valueNode);
 
     public override string ToString()
     {

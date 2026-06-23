@@ -13,12 +13,12 @@ public class SingleLinkedLists
 
     private static void CreateList(ref SingleList<int> linkedList)
     {
-        linkedList.Head = new SingleNode<int>(10);
-        SingleNode<int> node1 = new(1);
-        SingleNode<int> node2 = new(2);
-        SingleNode<int> node3 = new(3);
-        SingleNode<int> node4 = new(4);
-        SingleNode<int> node5 = new(5);
+        linkedList.Head = new SingleNode<int> { Value = 10 };
+        SingleNode<int> node1 = new() { Value = 1 };
+        SingleNode<int> node2 = new() { Value = 2 };
+        SingleNode<int> node3 = new() { Value = 3 };
+        SingleNode<int> node4 = new() { Value = 4 };
+        SingleNode<int> node5 = new() { Value = 5 };
 
         linkedList.Head.Next = node1;
         node1.Next = node2;
