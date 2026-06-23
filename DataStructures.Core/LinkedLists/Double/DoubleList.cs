@@ -26,7 +26,7 @@ public class DoubleList<T> : List<T>
         DoubleNode<T> head = GetLastNode();
         while(head is not null)
         {
-            Console.Write($"{head.Data} ");
+            Console.Write($"{head.Value} ");
             head = (DoubleNode<T>)head.Prev;
         }
         Console.WriteLine();

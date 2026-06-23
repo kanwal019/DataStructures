@@ -1,6 +1,8 @@
-﻿namespace DataStructures.Core.LinkedLists.Double;
+﻿using DataStructures.Core.Common;
 
-public class DoubleNode<T>(T data) : Node<T>(data)
+namespace DataStructures.Core.LinkedLists.Double;
+
+public class DoubleNode<T> : Node<T>
 {
     public Node<T> Prev = null;
 }

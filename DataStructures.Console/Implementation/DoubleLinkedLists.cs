@@ -13,12 +13,12 @@ public class DoubleLinkedLists
 
     private static void CreateList(ref DoubleList<int> linkedList)
     {
-        linkedList.Head = new DoubleNode<int>(10);
-        DoubleNode<int> node1 = new(1);
-        DoubleNode<int> node2 = new(2);
-        DoubleNode<int> node3 = new(3);
-        DoubleNode<int> node4 = new(4);
-        DoubleNode<int> node5 = new(5);
+        linkedList.Head = new DoubleNode<int> { Value = 10 };
+        DoubleNode<int> node1 = new() { Value = 1 };
+        DoubleNode<int> node2 = new() { Value = 2 };
+        DoubleNode<int> node3 = new() { Value = 3 };
+        DoubleNode<int> node4 = new() { Value = 4 };
+        DoubleNode<int> node5 = new() { Value = 5 };
 
         linkedList.Head.Next = node1;
         node1.Prev = linkedList.Head;

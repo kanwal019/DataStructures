@@ -1,4 +1,5 @@
 ﻿using System;
+using DataStructures.Core.Common;
 
 namespace DataStructures.Core.LinkedLists;
 
@@ -11,7 +12,7 @@ public abstract class List<T>
         Node<T> head = Head;
         while (head is not null)
         {
-            Console.Write($"{head.Data} ");
+            Console.Write($"{head.Value} ");
             head = head.Next;
         }
         Console.WriteLine();
@@ -22,7 +23,7 @@ public abstract class List<T>
         Node<T> head = Head;
         while (head.Next is not null)
         {
-            Console.Write($"{head.Data} ");
+            Console.Write($"{head.Value} ");
             head = head.Next;
         }
         return head;

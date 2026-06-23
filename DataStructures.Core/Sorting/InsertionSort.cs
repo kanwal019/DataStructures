@@ -6,13 +6,12 @@ public static class InsertionSort
 {
     public static void Sort<T>(T[] array) where T : IComparable<T>
     {
-        if (array == null)
+        if (array is null)
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
         int n = array.Length;
-
         for (int i = 1; i < n; i++)
         {
             T key = array[i];

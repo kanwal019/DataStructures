@@ -1,5 +1,7 @@
-﻿namespace DataStructures.Core.LinkedLists.Single;
+﻿using DataStructures.Core.Common;
 
-public class SingleNode<T>(T data) : Node<T>(data)
+namespace DataStructures.Core.LinkedLists.Single;
+
+public class SingleNode<T> : Node<T>
 {
 }

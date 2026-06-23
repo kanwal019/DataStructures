@@ -1,12 +1,7 @@
 using System;
+using DataStructures.Core.Common;
 
 namespace DataStructures.Core.Queues;
-
-public class Node<T>
-{
-    public Node<T> Next { get; set; }
-    public T Value { get; set; }
-}
 
 public class Queue<T>
 {

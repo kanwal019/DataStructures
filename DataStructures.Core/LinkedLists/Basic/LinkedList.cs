@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DataStructures.Core.Common;
 
 namespace DataStructures.Core.LinkedLists.Basic;
 
@@ -11,17 +12,14 @@ public class LinkedList<T>
     public (Node<T> previous, Node<T> found) FindFirst(T value)
     {
         Node<T> previous = null;
-
-        for (var current = Root; current != null; current = current.Next)
+        for (var current = Root; current is not null; current = current.Next)
         {
             if (EqualityComparer<T>.Default.Equals(current.Value, value))
             {
                 return (previous, current);
             }
-
             previous = current;
         }
-
         return (null, null);
     }
 
@@ -39,7 +37,7 @@ public class LinkedList<T>
     {
         var valueNode = CreateNode(value);
 
-        if (Root == null)
+        if (Root is null)
         {
             Root = valueNode;
             return valueNode;
@@ -54,25 +52,19 @@ public class LinkedList<T>
         ArgumentNullException.ThrowIfNull(node);
 
         var nextNode = node.Next;
-        if (nextNode == null)
-        {
-            return false;
-        }
+        if (nextNode is null) return false;
 
         node.Next = nextNode.Next;
         return true;
     }
 
-    public override string ToString()
-    {
-        return BuildString();
-    }
+    public override string ToString() => BuildString();
 
     protected Node<T> AppendNode(Node<T> valueNode)
     {
         ArgumentNullException.ThrowIfNull(valueNode);
 
-        if (Root == null)
+        if (Root is null)
         {
             Root = valueNode;
             return valueNode;
@@ -84,43 +76,34 @@ public class LinkedList<T>
 
     protected string BuildString()
     {
-        var result = new StringBuilder("[");
+        StringBuilder result = new("["); ;
         var node = Root;
 
-        while (node != null)
+        while (node is not null)
         {
             result.Append(node.Value);
             node = node.Next;
 
-            if (node != null)
-            {
-                result.Append(',');
-            }
+            if (node is not null) result.Append(',');
         }
 
         result.Append(']');
-
         return result.ToString();
     }
 
-    protected static Node<T> CreateNode(T value, Node<T> next = null)
+    protected static Node<T> CreateNode(T value, Node<T> next = null) => new()
     {
-        return new Node<T>
-        {
-            Value = value,
-            Next = next
-        };
-    }
+        Value = value,
+        Next = next
+    };
 
     protected Node<T> GetTail()
     {
         var node = Root;
-
-        while (node.Next != null)
+        while (node.Next is not null)
         {
             node = node.Next;
         }
-
         return node;
     }
 }

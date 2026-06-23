@@ -6,7 +6,7 @@ public static class QuickSort
 {
     public static void Sort<T>(T[] array) where T : IComparable<T>
     {
-        if (array == null)
+        if (array is null)
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }

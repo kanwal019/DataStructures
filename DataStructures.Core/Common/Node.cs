@@ -1,8 +1,7 @@
-namespace DataStructures.Core.LinkedLists.Basic;
+namespace DataStructures.Core.Common;
 
 public class Node<T>
 {
     public Node<T> Next { get; set; }
-
     public T Value { get; set; }
 }

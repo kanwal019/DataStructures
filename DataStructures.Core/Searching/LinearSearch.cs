@@ -7,7 +7,7 @@ public static class LinearSearch
 {
     public static int Search<T>(T[] array, T target)
     {
-        if (array == null)
+        if (array is null)
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
@@ -16,7 +16,7 @@ public static class LinearSearch
         {
             if (EqualityComparer<T>.Default.Equals(array[i], target))
             {
-                return i; // Return the index of the found element
+                return i;
             }
         }
         return -1;
