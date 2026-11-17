@@ -52,22 +52,17 @@ public class CollectionTests
     }
 
     [Fact]
-    public void BitArrayDemoCountsThreeSetBits()
+    public void LinkedListAddReturnsNodesInInsertionOrder()
     {
-        var original = System.Console.Out;
-        using var output = new StringWriter();
-        try
-        {
-            System.Console.SetOut(output);
-            DataStructures.Console.Implementation.BitArrayImplementation.DisplayResult();
-        }
-        finally
-        {
-            System.Console.SetOut(original);
-        }
+        var list = new DataStructures.Core.LinkedLists.Basic.LinkedList<int>();
+        var first = list.Add(10);
+        var second = list.Add(20);
+        var third = list.Add(30);
 
-        Assert.Contains("Bit count: 16", output.ToString());
-        Assert.Contains("Set bits (manual): 3", output.ToString());
-        Assert.Contains("Set bits (PopCount): 3", output.ToString());
+        Assert.Same(first, list.Root);
+        Assert.Same(second, first.Next);
+        Assert.Same(third, second.Next);
+        Assert.Null(third.Next);
+        Assert.Equal("[10,20,30]", list.ToString());
     }
 }

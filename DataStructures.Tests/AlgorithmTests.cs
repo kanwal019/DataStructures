@@ -5,8 +5,22 @@ namespace DataStructures.Tests;
 
 public class AlgorithmTests
 {
-    public enum SortAlgorithm { Bubble, Heap, Insertion, Merge, Quick, Selection }
-    public enum SearchAlgorithm { Linear, Binary, RecursiveBinary }
+    public enum SortAlgorithm
+    {
+        Bubble,
+        Heap,
+        Insertion,
+        Merge,
+        Quick,
+        Selection
+    }
+
+    public enum SearchAlgorithm
+    {
+        Linear,
+        Binary,
+        RecursiveBinary
+    }
 
     [Theory]
     [InlineData(SortAlgorithm.Bubble)]
@@ -22,6 +36,8 @@ public class AlgorithmTests
         cases = [.. cases, .. Enumerable.Range(0, 30)
             .Select(_ => Enumerable.Range(0, random.Next(0, 65)).Select(_ => random.Next(-20, 21)).ToArray())];
 
+        Assert.Throws<ArgumentNullException>(() => SortArray(algorithm, null!));
+
         foreach (int[] input in cases)
         {
             int[] expected = input.Order().ToArray();
@@ -34,7 +50,6 @@ public class AlgorithmTests
             Assert.Equal(12345, sliced[0]);
             Assert.Equal(-12345, sliced[^1]);
             Assert.Equal(expected, sliced[1..^1]);
-            Assert.Throws<ArgumentNullException>(() => SortArray(algorithm, null!));
         }
     }
 
@@ -72,12 +87,26 @@ public class AlgorithmTests
     {
         switch (algorithm)
         {
-            case SortAlgorithm.Bubble: BubbleSort.Sort(items); break;
-            case SortAlgorithm.Heap: HeapSort.Sort(items); break;
-            case SortAlgorithm.Insertion: InsertionSort.Sort(items); break;
-            case SortAlgorithm.Merge: MergeSort.Sort(items); break;
-            case SortAlgorithm.Quick: QuickSort.Sort(items); break;
-            case SortAlgorithm.Selection: SelectionSort.Sort(items); break;
+            case SortAlgorithm.Bubble:
+                BubbleSort.Sort(items);
+                break;
+            case SortAlgorithm.Heap:
+                HeapSort.Sort(items);
+                break;
+            case SortAlgorithm.Insertion:
+                InsertionSort.Sort(items);
+                break;
+            case SortAlgorithm.Merge:
+                MergeSort.Sort(items);
+                break;
+            case SortAlgorithm.Quick:
+                QuickSort.Sort(items);
+                break;
+            case SortAlgorithm.Selection:
+                SelectionSort.Sort(items);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(algorithm));
         }
     }
 
@@ -85,12 +114,26 @@ public class AlgorithmTests
     {
         switch (algorithm)
         {
-            case SortAlgorithm.Bubble: BubbleSort.Sort(items); break;
-            case SortAlgorithm.Heap: HeapSort.Sort(items); break;
-            case SortAlgorithm.Insertion: InsertionSort.Sort(items); break;
-            case SortAlgorithm.Merge: MergeSort.Sort(items); break;
-            case SortAlgorithm.Quick: QuickSort.Sort(items); break;
-            case SortAlgorithm.Selection: SelectionSort.Sort(items); break;
+            case SortAlgorithm.Bubble:
+                BubbleSort.Sort(items);
+                break;
+            case SortAlgorithm.Heap:
+                HeapSort.Sort(items);
+                break;
+            case SortAlgorithm.Insertion:
+                InsertionSort.Sort(items);
+                break;
+            case SortAlgorithm.Merge:
+                MergeSort.Sort(items);
+                break;
+            case SortAlgorithm.Quick:
+                QuickSort.Sort(items);
+                break;
+            case SortAlgorithm.Selection:
+                SelectionSort.Sort(items);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(algorithm));
         }
     }
 
