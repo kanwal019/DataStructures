@@ -18,18 +18,19 @@ Implemented so far:
 - Linear and binary search
 - Selection, bubble, insertion, merge, quick, and heap sort
 - String behavior examples
+- Bit-array counting with .NET 11 span constructors and `PopCount()`
 
 ## Solution Layout
 
 - `DataStructures.Core`: reusable data structures, nodes, extensions, searching, and sorting algorithms
 - `DataStructures.Console`: console demos and display helpers for the core implementations
-- `DataStructures.Library` and `DataStructures.Main`: legacy folders that are not currently active
+- `DataStructures.Tests`: xUnit regression tests for collections, searching, sorting, and demos
 
 ## Getting Started
 
 Install the [.NET 11 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/11.0) (11.0.100 or a newer stable 11.0 SDK). The repository's `global.json` selects .NET 11 and allows newer 11.0 SDK feature bands and patches. If using Visual Studio, use Visual Studio 2026 version 18.12 or later with .NET 11 support.
 
-Both projects use the .NET shared framework without external NuGet packages. The console project references `DataStructures.Core` directly.
+The core and console projects use the .NET shared framework without external NuGet packages. The console project references `DataStructures.Core` directly. The test project uses xUnit and the .NET test SDK.
 
 Build the solution:
 
@@ -47,6 +48,12 @@ Build only the core project:
 
 ```bash
 dotnet build DataStructures.Core/DataStructures.Core.csproj
+```
+
+Run the regression tests:
+
+```bash
+dotnet test --configuration Release
 ```
 
 ## Implementations
@@ -71,10 +78,18 @@ Supported operations:
 - `Add(T item)`
 - `Get(int index)`
 - `Set(int index, T value)`
+- `list[index]`: read or update an item with bounds checking
 - `InsertAt(int index, T item)`
 - `RemoveAt(int index)`
 
 Console example: `DataStructures.Console/Implementation/CustomArrayList.cs`
+
+The demo uses C# 15 collection expressions with constructor arguments to choose initial capacity:
+
+```csharp
+ArrayList<int> numbers = [with(capacity: 16), 1, 2, 3];
+numbers[0] = 100;
+```
 
 ### Linked Lists
 
@@ -143,6 +158,20 @@ Console example: `DataStructures.Console/Implementation/SearchImplementation.cs`
 
 Console example: `DataStructures.Console/Implementation/SortImplementation.cs`
 
+All sorting algorithms also accept `Span<T>`, and the searching algorithms accept `ReadOnlySpan<T>`. The array overloads remain available and reject null arrays. Span searches return indices relative to the supplied slice:
+
+```csharp
+int[] values = [99, 3, 1, 2, 88];
+MergeSort.Sort(values.AsSpan(1, 3)); // values becomes [99, 1, 2, 3, 88]
+int index = BinarySearch.Search<int>(values.AsSpan(1, 3), 2); // 1
+```
+
+Merge sort allocates one scratch array per sort and reuses slices of it throughout recursion, preserving stable ordering.
+
+### Bit Arrays
+
+`DataStructures.Console/Implementation/BitArrayImplementation.cs` demonstrates .NET 11's `BitArray(ReadOnlySpan<byte>)` constructor and `PopCount()`, comparing the result with a manual count. Set `Program.cs` to `DataStructures.Console.Implementation.BitArrayImplementation.DisplayResult();` to run it. Both counts are 3 for the sample's 16 bits.
+
 ### Strings
 
 **Location**: `DataStructures.Console/Implementation/Strings.cs`
@@ -159,7 +188,7 @@ String examples cover common string methods, immutability, spans, memory behavio
 - Add demo code under `DataStructures.Console/Implementation/`
 - Prefer generic types where they make the implementation clearer
 - Keep educational readability ahead of cleverness
-- Add focused tests when a test project is introduced
+- Add focused regression tests under `DataStructures.Tests/`
 
 ## Future Work
 
@@ -169,7 +198,6 @@ Planned topics:
 - Binary trees
 - Graphs
 - Hash tables
-- Unit tests
 
 ## Notes
 
