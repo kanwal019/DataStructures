@@ -4,9 +4,9 @@ A C# learning repository for implementing common data structures and algorithms 
 
 ## Project Status
 
-**Current phase**: Early development  
-**Target framework**: .NET 11.0\
-**Current console entry point**: `QueueImplementation.DisplayResult()`
+- **Current phase**: Early development
+- **Target framework**: .NET 11.0
+- **Current console entry point**: `QueueImplementation.DisplayResult()`
 
 Implemented so far:
 
@@ -56,6 +56,29 @@ Run the regression tests:
 dotnet test --configuration Release
 ```
 
+The SDK restores the required test packages automatically during build and test commands.
+
+### Choosing a Demo
+
+The console app runs one demo at a time. Replace the call in [Program.cs](DataStructures.Console/Program.cs) with the desired method, then run the console project again.
+
+```csharp
+DataStructures.Console.Implementation.BitArrayImplementation.DisplayResult();
+```
+
+Common entry points under `DataStructures.Console.Implementation`:
+
+| Topic | Method |
+| --- | --- |
+| Queue | `QueueImplementation.DisplayResult()` |
+| Dynamic array | `CustomArrayList.DisplayResult()` |
+| Linked-list cycles | `MovingPointerLinkedList.DisplayResult()` |
+| Binary search | `SearchImplementation.DisplayBinarySearchResult()` |
+| Merge sort | `SortImplementation.DisplayMergeSortResult()` |
+| Bit arrays | `BitArrayImplementation.DisplayResult()` |
+| String parsing with spans | `Strings.DisplayImmutabilityResult()` |
+| Mutable character memory | `Strings.DisplayMemoryStringResult()` |
+
 ## Implementations
 
 ### Arrays
@@ -87,6 +110,8 @@ Console example: `DataStructures.Console/Implementation/CustomArrayList.cs`
 The demo uses C# 15 collection expressions with constructor arguments to choose initial capacity:
 
 ```csharp
+using DataStructures.Core.Arrays;
+
 ArrayList<int> numbers = [with(capacity: 16), 1, 2, 3];
 numbers[0] = 100;
 ```
@@ -135,6 +160,8 @@ Supported operations:
 
 Console example: `DataStructures.Console/Implementation/QueueImplementation.cs`
 
+`Dequeue()` and `Peek()` throw `InvalidOperationException` when the queue is empty. After the last item is removed, the queue can be reused. String display uses `StringBuilder` to avoid repeatedly concatenating strings during traversal.
+
 ### Searching Algorithms
 
 **Location**: `DataStructures.Core/Searching/`
@@ -161,12 +188,18 @@ Console example: `DataStructures.Console/Implementation/SortImplementation.cs`
 All sorting algorithms also accept `Span<T>`, and the searching algorithms accept `ReadOnlySpan<T>`. The array overloads remain available and reject null arrays. Span searches return indices relative to the supplied slice:
 
 ```csharp
+using System;
+using DataStructures.Core.Searching;
+using DataStructures.Core.Sorting;
+
 int[] values = [99, 3, 1, 2, 88];
 MergeSort.Sort(values.AsSpan(1, 3)); // values becomes [99, 1, 2, 3, 88]
 int index = BinarySearch.Search<int>(values.AsSpan(1, 3), 2); // 1
 ```
 
 Merge sort allocates one scratch array per sort and reuses slices of it throughout recursion, preserving stable ordering.
+
+Binary search requires sorted input. Slice searches return `-1` when the target is absent; sorting a slice leaves elements outside it unchanged. Spans are available in earlier .NET versions as well; the capacity arguments in collection expressions and the bit-array APIs above demonstrate the newer features used here.
 
 ### Bit Arrays
 
@@ -178,9 +211,25 @@ Merge sort allocates one scratch array per sort and reuses slices of it througho
 
 String examples cover common string methods, immutability, spans, memory behavior, and `StringBuilder`.
 
+The memory demo copies string characters into a mutable buffer before editing them, leaving the original interned strings unchanged. Each demo keeps its own input so running one does not change another's output.
+
 ## Console Helpers
 
 `DataStructures.Console/Extensions/` contains display and demo helpers for arrays, array lists, and linked lists. These helpers keep console output concerns separate from the core data-structure classes.
+
+## Tests
+
+[DataStructures.Tests](DataStructures.Tests/) uses xUnit and covers:
+
+- Queue reuse after becoming empty and empty-queue exceptions
+- Array-list indexing, bounds checks, and resizing
+- Linked-list insertion order and node links
+- All six sorting algorithms against framework-sorted results, including empty inputs, duplicates, and slices
+- Linear, binary, and recursive binary search with slice-relative indices
+- Merge-sort stability for equal keys
+- Bit-array counts and independent string demos
+
+Console output tests share one test class to keep output redirection from overlapping.
 
 ## Contributing
 
@@ -189,6 +238,27 @@ String examples cover common string methods, immutability, spans, memory behavio
 - Prefer generic types where they make the implementation clearer
 - Keep educational readability ahead of cleverness
 - Add focused regression tests under `DataStructures.Tests/`
+- Follow [.editorconfig](.editorconfig) for indentation, braces, imports, and whitespace
+- Follow [.gitattributes](.gitattributes) for consistent source-file line endings
+- Keep only required `using` directives; core and console projects use explicit imports, while the test project enables implicit usings
+
+Format the solution:
+
+```bash
+dotnet format DataStructures.sln
+```
+
+Check formatting without changing files:
+
+```bash
+dotnet format DataStructures.sln --verify-no-changes
+```
+
+Check specifically for unused imports:
+
+```bash
+dotnet format DataStructures.sln style --diagnostics IDE0005 --severity info --verify-no-changes
+```
 
 ## Future Work
 
