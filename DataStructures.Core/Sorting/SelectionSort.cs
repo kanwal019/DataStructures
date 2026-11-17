@@ -11,6 +11,12 @@ public static class SelectionSort
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
+        Sort<T>(array.AsSpan());
+    }
+
+    /// <summary>Sorts only the supplied span in place.</summary>
+    public static void Sort<T>(Span<T> array) where T : IComparable<T>
+    {
         int n = array.Length;
         for (int i = 0; i < n - 1; i++)
         {

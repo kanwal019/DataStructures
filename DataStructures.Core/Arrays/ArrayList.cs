@@ -21,6 +21,12 @@ public class ArrayList<T> : IEnumerable<T>
 
     public int Count => _count;
 
+    public T this[int index]
+    {
+        get => Get(index);
+        set => Set(index, value);
+    }
+
     public void Add(T item)
     {
         if (_count == _items.Length)

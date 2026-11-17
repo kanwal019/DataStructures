@@ -11,24 +11,34 @@ public static class MergeSort
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
-        if (array.Length <= 1)
-        {
-            return;
-        }
-
-        int mid = array.Length / 2;
-        T[] left = new T[mid];
-        T[] right = new T[array.Length - mid];
-
-        Array.Copy(array, 0, left, 0, mid);
-        Array.Copy(array, mid, right, 0, array.Length - mid);
-
-        Sort(left);
-        Sort(right);
-        Merge(array, left, right);
+        Sort<T>(array.AsSpan());
     }
 
-    private static void Merge<T>(T[] array, T[] left, T[] right) where T : IComparable<T>
+    /// <summary>Stably sorts the supplied span using one reusable scratch buffer.</summary>
+    public static void Sort<T>(Span<T> array) where T : IComparable<T>
+    {
+        if (array.Length <= 1)
+            return;
+
+        T[] scratch = new T[array.Length];
+        SortRecursive(array, scratch.AsSpan());
+    }
+
+    private static void SortRecursive<T>(Span<T> array, Span<T> scratch) where T : IComparable<T>
+    {
+        if (array.Length <= 1)
+            return;
+
+        int mid = array.Length / 2;
+        SortRecursive(array[..mid], scratch[..mid]);
+        SortRecursive(array[mid..], scratch[mid..]);
+
+        // Read from scratch so merging cannot overwrite values still being read.
+        array.CopyTo(scratch);
+        Merge<T>(array, scratch[..mid], scratch[mid..]);
+    }
+
+    private static void Merge<T>(Span<T> array, ReadOnlySpan<T> left, ReadOnlySpan<T> right) where T : IComparable<T>
     {
         int i = 0, j = 0, k = 0;
 

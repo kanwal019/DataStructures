@@ -7,7 +7,7 @@ public class CustomArrayList
 {
     public static void DisplayResult()
     {
-        ArrayList<int> numbers = [];
+        ArrayList<int> numbers = [with(capacity: 16)];
         for (int i = 1; i <= 10; i++)
         {
             numbers.Add(i);
@@ -15,7 +15,7 @@ public class CustomArrayList
         numbers.Display();
         numbers.DisplayReverse();
 
-        numbers.Set(0, 100);
+        numbers[0] = 100;
         numbers.Display();
         numbers.DisplayReverse();
 
@@ -30,15 +30,11 @@ public class CustomArrayList
 
     public static void DisplayStringArrayListResult()
     {
-        ArrayList<string> words = [];
-        words.Add("Hello");
-        words.Add("World");
-        words.Add("from");
-        words.Add("CustomArrayList");
+        ArrayList<string> words = [with(capacity: 8), "Hello", "World", "from", "CustomArrayList"];
         words.Display();
         words.DisplayReverse();
 
-        words.Set(1, "C#");
+        words[1] = "C#";
         words.Display();
         words.DisplayReverse();
 

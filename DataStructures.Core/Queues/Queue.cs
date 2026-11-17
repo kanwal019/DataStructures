@@ -29,6 +29,8 @@ public class Queue<T>
 
         var result = Head.Value;
         Head = Head.Next;
+        if (Head is null)
+            Tail = null;
         return result;
     }
 
