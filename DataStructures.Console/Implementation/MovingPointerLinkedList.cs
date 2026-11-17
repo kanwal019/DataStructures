@@ -1,7 +1,7 @@
-using DataStructures.Core.LinkedLists.Basic;
-using DataStructures.Core.Extensions;
 using DataStructures.Console.Extensions;
 using DataStructures.Core.Common;
+using DataStructures.Core.Extensions;
+using DataStructures.Core.LinkedLists.Basic;
 
 namespace DataStructures.Console.Implementation;
 

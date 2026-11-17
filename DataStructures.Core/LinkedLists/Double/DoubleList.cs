@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace DataStructures.Core.LinkedLists.Double;
 
@@ -24,7 +24,7 @@ public class DoubleList<T> : List<T>
     public void DisplayReverse()
     {
         DoubleNode<T> head = GetLastNode();
-        while(head is not null)
+        while (head is not null)
         {
             Console.Write($"{head.Value} ");
             head = (DoubleNode<T>)head.Prev;

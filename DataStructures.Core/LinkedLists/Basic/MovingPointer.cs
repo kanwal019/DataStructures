@@ -9,7 +9,10 @@ public class MovingPointer<T> : LinkedList<T>
 
     public override string ToString()
     {
-        if (this.HasCycle()) return "List with cycle";
+        if (this.HasCycle())
+        {
+            return "List with cycle";
+        }
 
         return BuildString();
     }

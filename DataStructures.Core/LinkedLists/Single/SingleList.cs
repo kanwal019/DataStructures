@@ -1,4 +1,4 @@
-﻿namespace DataStructures.Core.LinkedLists.Single;
+namespace DataStructures.Core.LinkedLists.Single;
 
 public class SingleList<T> : List<T>
 {
