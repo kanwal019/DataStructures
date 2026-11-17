@@ -11,6 +11,12 @@ public static class HeapSort
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
+        Sort<T>(array.AsSpan());
+    }
+
+    /// <summary>Sorts only the supplied span in place.</summary>
+    public static void Sort<T>(Span<T> array) where T : IComparable<T>
+    {
         int n = array.Length;
 
         for (int i = n / 2 - 1; i >= 0; i--)
@@ -28,7 +34,7 @@ public static class HeapSort
         }
     }
 
-    private static void Heapify<T>(T[] array, int n, int i) where T : IComparable<T>
+    private static void Heapify<T>(Span<T> array, int n, int i) where T : IComparable<T>
     {
         int largest = i;
         int left = 2 * i + 1;

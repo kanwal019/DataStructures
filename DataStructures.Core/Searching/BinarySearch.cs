@@ -12,6 +12,12 @@ public static class BinarySearch
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
+        return Search<T>(array.AsSpan(), target);
+    }
+
+    /// <summary>Returns the index relative to the supplied span, or -1 when absent.</summary>
+    public static int Search<T>(ReadOnlySpan<T> array, T target)
+    {
         int low = 0;
         int high = array.Length - 1;
 
@@ -43,10 +49,16 @@ public static class BinarySearch
         {
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
+        return SearchRecursive<T>(array.AsSpan(), target);
+    }
+
+    /// <summary>Returns the index relative to the supplied span, or -1 when absent.</summary>
+    public static int SearchRecursive<T>(ReadOnlySpan<T> array, T target)
+    {
         return SearchRecursiveHelper(array, target, 0, array.Length - 1);
     }
 
-    private static int SearchRecursiveHelper<T>(T[] array, T target, int low, int high)
+    private static int SearchRecursiveHelper<T>(ReadOnlySpan<T> array, T target, int low, int high)
     {
         if (low > high)
         {

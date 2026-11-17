@@ -11,10 +11,16 @@ public static class QuickSort
             throw new ArgumentNullException(nameof(array), "Array cannot be null.");
         }
 
+        Sort<T>(array.AsSpan());
+    }
+
+    /// <summary>Sorts only the supplied span in place.</summary>
+    public static void Sort<T>(Span<T> array) where T : IComparable<T>
+    {
         QuickSortRecursive(array, 0, array.Length - 1);
     }
 
-    private static void QuickSortRecursive<T>(T[] array, int low, int high) where T : IComparable<T>
+    private static void QuickSortRecursive<T>(Span<T> array, int low, int high) where T : IComparable<T>
     {
         if (low < high)
         {
@@ -24,7 +30,7 @@ public static class QuickSort
         }
     }
 
-    private static int Partition<T>(T[] array, int low, int high) where T : IComparable<T>
+    private static int Partition<T>(Span<T> array, int low, int high) where T : IComparable<T>
     {
         T pivot = array[high];
         int i = low - 1;
@@ -42,7 +48,7 @@ public static class QuickSort
         return i + 1;
     }
 
-    private static void Swap<T>(T[] array, int i, int j)
+    private static void Swap<T>(Span<T> array, int i, int j)
     {
         T temp = array[i];
         array[i] = array[j];
