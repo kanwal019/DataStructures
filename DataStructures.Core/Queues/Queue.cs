@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using DataStructures.Core.Common;
 
 namespace DataStructures.Core.Queues;
@@ -25,36 +26,45 @@ public class Queue<T>
     public T Dequeue()
     {
         if (Head is null)
+        {
             throw new InvalidOperationException("The queue is empty!");
+        }
 
         var result = Head.Value;
         Head = Head.Next;
         if (Head is null)
+        {
             Tail = null;
+        }
+
         return result;
     }
 
     public T Peek()
     {
         if (Head is null)
+        {
             throw new InvalidOperationException("The queue is empty!");
+        }
 
         return Head.Value;
     }
 
     public override string ToString()
     {
-        string result = "[";
+        StringBuilder result = new("[");
         var node = Head;
         while (node is not null)
         {
-            result += node.Value;
+            result.Append(node.Value);
             node = node.Next;
 
-            if (node is not null) 
-                result += ",";
+            if (node is not null)
+            {
+                result.Append(',');
+            }
         }
-        result += "]";
-        return result;
+        result.Append(']');
+        return result.ToString();
     }
 }

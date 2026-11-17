@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 
 namespace DataStructures.Console.Implementation;
 
 public class Strings
 {
-    private static string str = "Hello, World!";
+    private const string Greeting = "Hello, World!";
 
     public static void DisplayResult()
     {
+        string str = Greeting;
         System.Console.WriteLine($"Original String: {str}");
         System.Console.WriteLine($"Length: {str.Length}");
         System.Console.WriteLine($"Uppercase: {str.ToUpper()}");
@@ -23,8 +23,8 @@ public class Strings
 
     public static void DisplayImmutabilityResult()
     {
-        // This will create a new sytring as the string is immutable
-        str = "The number to be parsed is: 123";
+        const string str = "The number to be parsed is: 123";
+        // Slicing a string creates a new string.
         string num = str[(str.IndexOf(':') + 2)..];
 
         if (int.TryParse(num, out int parsedNumber))
@@ -36,7 +36,7 @@ public class Strings
             System.Console.WriteLine("Failed to parse the number.");
         }
 
-        // This will not create a new string as the ReadOnlySpan<T> is a stack-only type
+        // Slicing a span reads the existing characters without allocating a string.
         ReadOnlySpan<char> span = str;
         ReadOnlySpan<char> spanNum = span[(span.IndexOf(':') + 2)..];
         if (int.TryParse(spanNum, out parsedNumber))
@@ -57,7 +57,8 @@ public class Strings
         // Prints out true, because both strings are interned and reference the same object in memory
         System.Console.WriteLine(object.ReferenceEquals(firstString, secondString));
 
-        Memory<char> mem = MemoryMarshal.AsMemory(firstString.AsMemory());
+        // Copy into a mutable buffer; the interned strings remain unchanged.
+        Memory<char> mem = firstString.ToCharArray();
         mem.Span[5] = 'Z';
 
         System.Console.WriteLine($"Modified String: {mem}");
@@ -66,12 +67,12 @@ public class Strings
     }
 
     public static void DisplayStringBuilderResult()
-    {        
+    {
         var sb = new StringBuilder();
         foreach (int i in Enumerable.Range(1, 20))
         {
             // StringBuilder is mutable, so we can modify it without creating a new object
-            sb.Append($"{i},");
+            sb.Append(i).Append(',');
         }
         System.Console.WriteLine(sb.ToString());
     }
