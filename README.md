@@ -5,7 +5,7 @@ A C# learning repository for implementing common data structures and algorithms 
 ## Project Status
 
 **Current phase**: Early development  
-**Target framework**: .NET 10.0  
+**Target framework**: .NET 11.0\
 **Current console entry point**: `QueueImplementation.DisplayResult()`
 
 Implemented so far:
@@ -26,6 +26,10 @@ Implemented so far:
 - `DataStructures.Library` and `DataStructures.Main`: legacy folders that are not currently active
 
 ## Getting Started
+
+Install the [.NET 11 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/11.0) (11.0.100 or a newer stable 11.0 SDK). The repository's `global.json` selects .NET 11 and allows newer 11.0 SDK feature bands and patches. If using Visual Studio, use Visual Studio 2026 version 18.12 or later with .NET 11 support.
+
+Both projects use the .NET shared framework without external NuGet packages. The console project references `DataStructures.Core` directly.
 
 Build the solution:
 
