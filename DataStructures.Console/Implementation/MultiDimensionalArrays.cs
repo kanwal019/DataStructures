@@ -1,4 +1,4 @@
-﻿using DataStructures.Console.Extensions;
+using DataStructures.Console.Extensions;
 
 namespace DataStructures.Console.Implementation;
 

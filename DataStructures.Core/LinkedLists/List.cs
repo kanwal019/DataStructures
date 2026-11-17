@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DataStructures.Core.Common;
 
 namespace DataStructures.Core.LinkedLists;

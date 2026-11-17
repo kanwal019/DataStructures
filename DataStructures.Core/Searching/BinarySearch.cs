@@ -80,5 +80,5 @@ public static class BinarySearch
         {
             return SearchRecursiveHelper(array, target, low, mid - 1);
         }
-    }   
+    }
 }

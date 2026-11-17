@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace DataStructures.Console.Extensions;
@@ -71,7 +71,9 @@ public static class ArrayExtensions
     public static void DisplayRow<T>(this T[][] array, int rowIndex)
     {
         if (rowIndex < 0 || rowIndex >= array.Length)
+        {
             throw new ArgumentOutOfRangeException(nameof(rowIndex));
+        }
 
         array[rowIndex].Display();
     }

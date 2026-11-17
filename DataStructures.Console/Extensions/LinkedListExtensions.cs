@@ -1,6 +1,6 @@
-using DataStructures.Core.LinkedLists.Basic;
-using DataStructures.Core.Extensions;
 using DataStructures.Core.Common;
+using DataStructures.Core.Extensions;
+using DataStructures.Core.LinkedLists.Basic;
 
 namespace DataStructures.Console.Extensions;
 
@@ -23,7 +23,10 @@ public static class LinkedListExtensions
     {
         Node<T> node = list.GetNodeInsideLoop();
 
-        if (node is null) return (null, null);
+        if (node is null)
+        {
+            return (null, null);
+        }
 
         int size = 1;
         Node<T> slidingNode = node;
@@ -40,7 +43,11 @@ public static class LinkedListExtensions
 
         for (int i = 0; i < size; i++)
         {
-            if (i != 0) previous = previous.Next;
+            if (i != 0)
+            {
+                previous = previous.Next;
+            }
+
             second = second.Next;
         }
 

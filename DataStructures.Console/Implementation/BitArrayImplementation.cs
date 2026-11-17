@@ -15,7 +15,9 @@ public static class BitArrayImplementation
         foreach (bool bit in bits)
         {
             if (bit)
+            {
                 manualCount++;
+            }
         }
 
         System.Console.WriteLine($"Bit count: {bits.Length}");

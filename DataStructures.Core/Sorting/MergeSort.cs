@@ -18,7 +18,9 @@ public static class MergeSort
     public static void Sort<T>(Span<T> array) where T : IComparable<T>
     {
         if (array.Length <= 1)
+        {
             return;
+        }
 
         T[] scratch = new T[array.Length];
         SortRecursive(array, scratch.AsSpan());
@@ -27,7 +29,9 @@ public static class MergeSort
     private static void SortRecursive<T>(Span<T> array, Span<T> scratch) where T : IComparable<T>
     {
         if (array.Length <= 1)
+        {
             return;
+        }
 
         int mid = array.Length / 2;
         SortRecursive(array[..mid], scratch[..mid]);
