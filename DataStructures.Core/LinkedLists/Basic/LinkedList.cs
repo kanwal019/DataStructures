@@ -33,26 +33,17 @@ public class LinkedList<T>
         return valueNode;
     }
 
-    public Node<T> Add(T value)
-    {
-        var valueNode = CreateNode(value);
-
-        if (Root is null)
-        {
-            Root = valueNode;
-            return valueNode;
-        }
-
-        GetTail().Next = valueNode;
-        return valueNode;
-    }
+    public Node<T> Add(T value) => AppendNode(CreateNode(value));
 
     public bool DeleteAfter(Node<T> node)
     {
         ArgumentNullException.ThrowIfNull(node);
 
         var nextNode = node.Next;
-        if (nextNode is null) return false;
+        if (nextNode is null)
+        {
+            return false;
+        }
 
         node.Next = nextNode.Next;
         return true;
@@ -76,7 +67,7 @@ public class LinkedList<T>
 
     protected string BuildString()
     {
-        StringBuilder result = new("["); ;
+        StringBuilder result = new("[");
         var node = Root;
 
         while (node is not null)
@@ -84,7 +75,10 @@ public class LinkedList<T>
             result.Append(node.Value);
             node = node.Next;
 
-            if (node is not null) result.Append(',');
+            if (node is not null)
+            {
+                result.Append(',');
+            }
         }
 
         result.Append(']');

@@ -8,7 +8,7 @@ public static class ArrayListExtensions
     {
         for (int i = 0; i < list.Count; i++)
         {
-            System.Console.Write($"{list.Get(i)} ");
+            System.Console.Write($"{list[i]} ");
         }
         System.Console.WriteLine();
     }
@@ -17,7 +17,7 @@ public static class ArrayListExtensions
     {
         for (int i = list.Count - 1; i >= 0; i--)
         {
-            System.Console.Write($"{list.Get(i)} ");
+            System.Console.Write($"{list[i]} ");
         }
         System.Console.WriteLine();
     }

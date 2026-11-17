@@ -1,4 +1,4 @@
-﻿using DataStructures.Core.LinkedLists.Double;
+using DataStructures.Core.LinkedLists.Double;
 
 namespace DataStructures.Console.Implementation;
 
@@ -7,11 +7,11 @@ public class DoubleLinkedLists
     public static void DisplayResult()
     {
         DoubleList<int> linkedList = new();
-        CreateList(ref linkedList);
-        DisplayList(linkedList, true);
+        CreateList(linkedList);
+        linkedList.DisplayReverse();
     }
 
-    private static void CreateList(ref DoubleList<int> linkedList)
+    private static void CreateList(DoubleList<int> linkedList)
     {
         linkedList.Head = new DoubleNode<int> { Value = 10 };
         DoubleNode<int> node1 = new() { Value = 1 };
@@ -30,15 +30,5 @@ public class DoubleLinkedLists
         node4.Prev = node3;
         node4.Next = node5;
         node5.Prev = node4;
-    }
-
-    private static void DisplayList(DoubleList<int> linkedList, bool reverse)
-    {
-        if (!reverse)
-        {
-            linkedList.Display();
-            return;
-        }
-        linkedList.DisplayReverse();            
     }
 }

@@ -1,4 +1,4 @@
-﻿using DataStructures.Core.LinkedLists.Single;
+using DataStructures.Core.LinkedLists.Single;
 
 namespace DataStructures.Console.Implementation;
 
@@ -7,11 +7,11 @@ public class SingleLinkedLists
     public static void DisplayResult()
     {
         SingleList<int> linkedList = new();
-        CreateList(ref linkedList);
-        DisplayList(linkedList);
+        CreateList(linkedList);
+        linkedList.Display();
     }
 
-    private static void CreateList(ref SingleList<int> linkedList)
+    private static void CreateList(SingleList<int> linkedList)
     {
         linkedList.Head = new SingleNode<int> { Value = 10 };
         SingleNode<int> node1 = new() { Value = 1 };
@@ -26,6 +26,4 @@ public class SingleLinkedLists
         node3.Next = node4;
         node4.Next = node5;
     }
-
-    private static void DisplayList(SingleList<int> linkedList) => linkedList.Display();
 }
